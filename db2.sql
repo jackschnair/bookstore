@@ -93,21 +93,22 @@ CREATE TABLE Book(
 	Date_Published DATE,
 	Type VARCHAR(20) NOT NULL,
 	Price REAL NOT NULL,
-Publisher_Name VARCHAR(20),
+	Publisher_Name VARCHAR(20),
 	Stock INT NOT NULL,
 	Trade_Value Real,
+	Def_Shipping_Cost Real,
 	PRIMARY KEY(ISBN, Book_Cond),
 	FOREIGN KEY (Publisher_Name) REFERENCES Publisher(Publisher_Name) ON 
 DELETE CASCADE ON UPDATE CASCADE
 );
 
-INSERT INTO Book VALUES('1234455677', 'used', 'Moby Dick', 'Herman Melville', 1, 'Adventure', '1851-10-15', 'Hard Cover', 15.15, 'Harper Collins', 50, 3.00);
-INSERT INTO Book VALUES('1477325925', 'new', 'The Great Gatsby', 'F Scott Fitzgerald', 0, 'Novel','1925-04-10', 'PaperBack', 5.99, 'Scholastic',102, NULL);
-INSERT INTO Book VALUES('8325787825', 'new', 'A Way in the Life', 'Larry David', 5, 'Comedy', '2013-07-01', 'Digital', 7.99, 'Biggie Cheese Inc', 30, NULL);
-INSERT INTO Book VALUES('8932578825', 'new', 'Cyrano De Bergerac', 'Edmond Rostand', 10, 'Drama', '1640-01-01', 'Audio', 10.99, 'Hachette Livre', 40, NULL);
-INSERT INTO Book VALUES('3288324823', 'used', 'The Seinfeld Scripts', 'Larry David',9, 'Non Fiction', '1998-01-01', 'PaperBack', 10.99, 'McGraw Hill', 60, 5.00);
-INSERT INTO Book VALUES('8437548384', 'used', 'If I Did It', 'OJ Simpson', 1, 'Fiction', '2007-09-07', 'Hard Cover', 10.99, 'McGraw Hill', 7, 5.00);
-INSERT INTO Book VALUES('574954985945', 'used', 'Le Petit Prince', 'Antoine de Saint Exupery', 7, 'Fiction', '1943-04-06', 'PaperBack', 20.99, 'McGraw Hill', 0, 7.00);
+INSERT INTO Book VALUES('1234455677', 'used', 'Moby Dick', 'Herman Melville', 1, 'Adventure', '1851-10-15', 'Hard Cover', 15.15, 'Harper Collins', 50, 3.00, 3.99);
+INSERT INTO Book VALUES('1477325925', 'new', 'The Great Gatsby', 'F Scott Fitzgerald', 0, 'Novel','1925-04-10', 'PaperBack', 5.99, 'Scholastic',102, NULL, 3.99);
+INSERT INTO Book VALUES('8325787825', 'new', 'A Way in the Life', 'Larry David', 5, 'Comedy', '2013-07-01', 'Digital', 7.99, 'Biggie Cheese Inc', 30, NULL, 3.99);
+INSERT INTO Book VALUES('8932578825', 'new', 'Cyrano De Bergerac', 'Edmond Rostand', 10, 'Drama', '1640-01-01', 'Audio', 10.99, 'Hachette Livre', 40, NULL, 3.99);
+INSERT INTO Book VALUES('3288324823', 'used', 'The Seinfeld Scripts', 'Larry David',9, 'Non Fiction', '1998-01-01', 'PaperBack', 10.99, 'McGraw Hill', 60, 5.00, 3.99);
+INSERT INTO Book VALUES('8437548384', 'used', 'If I Did It', 'OJ Simpson', 1, 'Fiction', '2007-09-07', 'Hard Cover', 10.99, 'McGraw Hill', 7, 5.00, 3.99);
+INSERT INTO Book VALUES('574954985945', 'used', 'Le Petit Prince', 'Antoine de Saint Exupery', 7, 'Fiction', '1943-04-06', 'PaperBack', 20.99, 'McGraw Hill', 0, 7.00, 3.99);
 
 
 CREATE TABLE Payment_info(

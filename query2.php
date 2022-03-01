@@ -17,7 +17,7 @@ $myconnection = mysqli_connect('localhost', 'root', '')
 
 $mydb = mysqli_select_db ($myconnection, 'bookstore') or die ('Could not select database');
 
-$query = "INSERT INTO book VALUES('$ISBN', '$Book_Cond', '$Title', '$Author', '$Edition', '$Genre', '$Date_Published', '$Type', '$Price', '$Publisher_Name', 0, '$Trade')";
+$query = "INSERT INTO book VALUES('$ISBN', '$Book_Cond', '$Title', '$Author', '$Edition', '$Genre', '$Date_Published', '$Type', '$Price', '$Publisher_Name', 0, '$Trade', 3.99)";
 $result = mysqli_query($myconnection, $query) or die ('Query failed: ' . mysql_error());
 
 mysqli_close($myconnection);
