@@ -13,14 +13,14 @@ $mydb = mysqli_select_db ($myconnection, 'bookstore') or die ('Could not select 
 
 // payment_info insert query
 $query1 = "INSERT INTO payment_info VALUES ('$Card_num', '$Name_on_card', '$Bill_addr', '$Exper_Date')";
-$result1 = mysqli_query($myconnection, $query2) or die ('Query failed: ' . mysql_error());
+$result1 = mysqli_query($myconnection, $query1) or die ('Query failed: ' . mysql_error());
 
 // has_pay_info insert query
 $query2 = "INSERT INTO has_pay_info VALUES ('$Email', '$Card_num')";
-$result2 = mysqli_query($myconnection, $query1) or die ('Query failed: ' . mysql_error());
+$result2 = mysqli_query($myconnection, $query2) or die ('Query failed: ' . mysql_error());
 
 // Become a member query
-$query3 = "UPDATE customer SET Membership = 1 WHERE Email = " . $Email;
+$query3 = "UPDATE customer SET Membership = 1 WHERE Email =" . $Email;
 $result3 = mysqli_query($myconnection, $query3) or die ('Query failed: ' . mysql_error());
 
 mysqli_close($myconnection);
