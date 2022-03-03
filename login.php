@@ -16,7 +16,7 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 if($row != NULL && $row["password"] == $Password) {
 	mysqli_free_result($result);
 	mysqli_close($myconnection);
-	header("Location: login.php", $Email);
+	header("Location: membership.html", $Email);
 	exit();
 }
 
