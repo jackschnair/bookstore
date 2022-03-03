@@ -20,7 +20,7 @@ $query2 = "INSERT INTO has_pay_info VALUES ('$Email', '$Card_num')";
 $result2 = mysqli_query($myconnection, $query2) or die ('Query failed: ' . mysql_error());
 
 // Become a member query
-$query3 = "UPDATE customer SET Membership = 1 WHERE Email =" . $Email;
+$query3 = "UPDATE customer SET Membership = 1 WHERE Email = '$Email'";
 $result3 = mysqli_query($myconnection, $query3) or die ('Query failed: ' . mysql_error());
 
 mysqli_close($myconnection);
