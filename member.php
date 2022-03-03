@@ -21,7 +21,7 @@ echo "<input type = \"hidden\" name = \"Email\" value = \"$Email\">";
 </tr>
 <tr>
 <td> Expiration Date: </td>
-<td> <input type = "text" name = "Exper_Date" maxlength = "40" /> </td>
+<td> <input type = "date" name = "Exper_Date" maxlength = "40" /> </td>
 </tr>
 <tr>
 <td> Billing Address: </td>
