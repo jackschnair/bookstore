@@ -32,7 +32,7 @@ INSERT INTO User VALUES('ojsimp@hotmail.com', 'OJ Simpson', '3734567897');
 INSERT INTO User VALUES('bobsbugsbegone@gmail.com', 'Bob Duncan', '4546675464');
 INSERT INTO User VALUES('imricherthanyou@rcn.com', 'Bill Gates', '9998887777');
 INSERT INTO User VALUES('tesla@gmail.com', 'Elon Musk', '5657678877');
-
+INSERT INTO User(Email) VALUES('SPECIAL');
 INSERT INTO User VALUES('Scholastic@gmail.com', 'Peter Warwick', '73878347');
 INSERT INTO User VALUES('Boombastic@yahoo.com', 'Biggie Cheese', '489328747');
 INSERT INTO User VALUES('McGraw@gmail.com', 'Simon Allen', '1238914914');
@@ -48,6 +48,7 @@ CREATE TABLE Customer (
 	ON UPDATE CASCADE
 );
 
+INSERT INTO Customer(Email, Password) VALUES('SPECIAL', 'securepassword');
 INSERT INTO Customer VALUES('elmo@gmail.com', 'elmo', 'password', False);
 INSERT INTO Customer VALUES('larry_david@gmail.com', 'LDMaster', 'curb',True);
 INSERT INTO Customer VALUES('jerry@gmail.com', 'jerry', 'seinfeld',True);

@@ -7,11 +7,10 @@
 <h1>Become a member</h1>
 <form action = "query1b.php" method = "post">
 <table border = "1">
-<tr>
-<td> Email: </td>
-<td> <input type = "text" name = "Email" maxlength = "40" /> </td>
-</tr>
-<tr>
+<?php
+session_start();
+echo "<input type = \"hidden\" name = \"email\" value = \"'$_SESSION['Email']'\">";
+?>
 <td> Card number: </td>
 <td> <input type = "text" name = "Card_num" maxlength = "25" /> </td>
 </tr>

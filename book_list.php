@@ -11,6 +11,8 @@
 <td><b><u>Author</b></u></td>
 <td><b><u>Genre</b></u></td>
 <td><b><u>ISBN</b></u></td>
+<td><b><u>Condition</b></u></td>
+<td><b><u>Type</b></u></td>
 <td><b><u>Add to Cart</b></u></td>
 </tr>
 <?php
@@ -19,11 +21,12 @@ $myconnection = mysqli_connect('localhost', 'root', '')
 
 $mydb = mysqli_select_db ($myconnection, 'bookstore') or die ('Could not select database');
 
-$query = 'SELECT title, author, genre, ISBN from Book';
+$query = 'SELECT title, author, genre, ISBN, Book_Cond, type from Book';
 $result = mysqli_query($myconnection, $query) or die ('Query failed: ' . mysql_error());
 
 while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 	$ISBN = $row["ISBN"];
+	$Book_Cond = $row["Book_Cond"];
 	echo "<tr>";
 	echo "<td>";
 	echo $row["title"];
@@ -37,8 +40,15 @@ while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 	echo "<td>";
 	echo $ISBN;
 	echo "</td>";
-	echo "<td><form action = \"buy.php\" method = \"Post\">";
-	echo "<input type = \"hidden\" value = \"$ISBN\">";
+	echo "<td>";
+	echo $Book_Cond;
+	echo "</td>";
+	echo "<td>";
+	echo $row["type"];
+	echo "</td>";
+	echo "<td><form action = \"addtocart.php\" method = \"Post\">";
+	echo "<input type = \"hidden\" name = \"ISBN\" value = \"$ISBN\">";
+	echo "<input type = \"hidden\" name = \"Book_Cond\" value = \"$Book_Cond\">";
 	echo "<input type = \"submit\" value = \"Add to Cart\"></form></td>";
 	echo "</tr>";
 }

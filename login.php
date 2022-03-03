@@ -14,9 +14,11 @@ $result = mysqli_query($myconnection, $query) or die ('Query failed: ' . mysql_e
 $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
 if($row != NULL && $row["password"] == $Password) {
+	session_start();
+	$_SESSION['Email'] = $Email;
 	mysqli_free_result($result);
 	mysqli_close($myconnection);
-	header("Location: query1b.html", $Email);
+	header("Location: userpage.php");
 	exit();
 }
 

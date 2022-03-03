@@ -1,5 +1,8 @@
 <?php
 
+session_start();
+
+$Email = $_SESSION['Email'];
 $ISBN = $_POST['ISBN'];
 $Book_Cond = $_POST['Book_Cond'];
 $Title = $_POST['Title'];
@@ -8,7 +11,6 @@ $Edition = $_POST['Edition'];
 $Price = $_POST['Price'];
 $Genre = $_POST['Genre'];
 $Date_Published = $_POST['Date_Published'];
-$Publisher_Name = $_POST['Publisher_Name'];
 $Type = $_POST['Type'];
 $Trade = $Price / 3;
 
@@ -17,7 +19,14 @@ $myconnection = mysqli_connect('localhost', 'root', '')
 
 $mydb = mysqli_select_db ($myconnection, 'bookstore') or die ('Could not select database');
 
-$query = "INSERT INTO book VALUES('$ISBN', '$Book_Cond', '$Title', '$Author', '$Edition', '$Genre', '$Date_Published', '$Type', '$Price', '$Publisher_Name', 0, '$Trade', 3.99)";
+//obtain publisher name
+$query0 = "SELECT Publisher_Name FROM Publisher WHERE email = '$Email'";
+$result0 = mysqli_query($myconnection, $query0) or die ('Query failed: ' . mysql_error());
+
+$row0 = mysqli_fetch_array($result0, MYSQLI_ASSOC);
+
+//add the book
+$query = "INSERT INTO book VALUES('$ISBN', '$Book_Cond', '$Title', '$Author', '$Edition', '$Genre', '$Date_Published', '$Type', '$Price', '$row0[Publisher_Name]', 0, '$Trade', 3.99)";
 $result = mysqli_query($myconnection, $query) or die ('Query failed: ' . mysql_error());
 
 mysqli_close($myconnection);
