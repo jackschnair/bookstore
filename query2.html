@@ -13,7 +13,12 @@
 </tr>
 <tr>
 <td> Book Cond: </td>
-<td> <input type = "text" name = "Book_Cond" maxlength = "10" /> </td>
+<td> 
+<select name = "Book_Cond" id = "Book_Cond">
+<option value = "used">Used</option>
+<option value = "new">New</option>
+</select>
+</td>
 </tr>
 <tr>
 <td> Title: </td>
@@ -33,11 +38,18 @@
 </tr>
 <tr>
 <td> Date Published: </td>
-<td> <input type = "text" name = "Date_Published" maxlength = "10" /> </td>
+<td> <input type = "date" name = "Date_Published"/> </td>
 </tr>
 <tr>
 <td> Type: </td>
-<td> <input type = "text" name = "Type" maxlength = "20" /> </td>
+<td> 
+<select name = "Type" id = "Type">
+<option value = "Digital">Digital</option>
+<option value = "PaperBack">PaperBack</option>
+<option value = "Hard Cover">Hard Cover</option>
+<option value = "Audio">Audio</option>
+</select>
+</td>
 </tr>
 <tr>
 <td> Price: </td>
