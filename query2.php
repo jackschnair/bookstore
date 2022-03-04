@@ -4,7 +4,6 @@ session_start();
 
 $Email = $_SESSION['Email'];
 $ISBN = $_POST['ISBN'];
-$Book_Cond = $_POST['Book_Cond'];
 $Title = $_POST['Title'];
 $Author = $_POST['Author'];
 $Edition = $_POST['Edition'];
@@ -26,8 +25,23 @@ $result0 = mysqli_query($myconnection, $query0) or die ('Query failed: ' . mysql
 $row0 = mysqli_fetch_array($result0, MYSQLI_ASSOC);
 
 //add the book
-$query = "INSERT INTO book VALUES('$ISBN', '$Book_Cond', '$Title', '$Author', '$Edition', '$Genre', '$Date_Published', '$Type', '$Price', '$row0[Publisher_Name]', 0, '$Trade', 3.99)";
-$result = mysqli_query($myconnection, $query) or die ('Query failed: ' . mysql_error());
+//there are two cases: either the book is digital or not.  If digital do not add a used copy. If not digital add both a used copy and a new copy.
+//sellers can only set the new price.  The used price and trade value is a function of the new price.
+//digital books do not have shipping costs either
+if($Type == "Digital") {
+	$query = "INSERT INTO book VALUES('$ISBN', 'new', '$Title', '$Author', '$Edition', '$Genre', '$Date_Published', '$Type', '$Price', '$row0[Publisher_Name]', 0, NULL, 0)";
+	$result = mysqli_query($myconnection, $query) or die ('Query failed: ' . mysql_error());
+}
+else {
+	$query2 = "INSERT INTO book VALUES('$ISBN', 'new', '$Title', '$Author', '$Edition', '$Genre', '$Date_Published', '$Type', '$Price', '$row0[Publisher_Name]', 0, NULL, 3.99)";
+	$result2 = mysqli_query($myconnection, $query2) or die ('Query failed: ' . mysql_error());
+
+	$used_price = $Price / 1.2;
+
+	$query3 = "INSERT INTO book VALUES('$ISBN', 'used', '$Title', '$Author', '$Edition', '$Genre', '$Date_Published', '$Type', '$used_price', '$row0[Publisher_Name]', 0, '$Trade', 3.99)";
+	$result3 = mysqli_query($myconnection, $query3) or die ('Query failed: ' . mysql_error());
+}
+
 
 mysqli_close($myconnection);
 
