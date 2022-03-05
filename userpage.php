@@ -16,7 +16,7 @@ echo "Welcome " . $_SESSION['Email'];
 <hr />
 <a href = "book_list.php">Book Search</a>
 <br />
-<a href = "shopping_cart.html">Shopping Cart</a>
+<a href = "shopping_cart.php">Shopping Cart</a>
 <br />
 <a href = "member.php">Membership Settings</a>
 <br />

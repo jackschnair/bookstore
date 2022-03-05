@@ -41,23 +41,37 @@ if($row == NULL) {
 mysqli_free_result($result);
 
 //get the cart of the user
-$query4 = "SELECT Cart_ID FROM has_cart WHERE email = '$Email'";
-$result4 = mysqli_query($myconnection, $query4) or die ('Query failed: ' . mysql_error());
+$query2 = "SELECT Cart_ID FROM has_cart WHERE email = '$Email'";
+$result2 = mysqli_query($myconnection, $query2) or die ('Query failed: ' . mysql_error());
 
-$row4 = mysqli_fetch_array($result4, MYSQLI_ASSOC);
-$user_cart = $row4["Cart_ID"];
+$row2 = mysqli_fetch_array($result2, MYSQLI_ASSOC);
+$user_cart = $row2["Cart_ID"];
 
 //insert book into the cart
+//if there is more than one copy of the book in the cart we must increase the quantity. OTW we need to add the book in the first place.
 
-$query2 = "INSERT INTO in_cart VALUES('$user_cart', '$ISBN', '$Book_Cond')";
-$result2 = mysqli_query($myconnection, $query2) or die ('Query failed: ' . mysql_error());
+//start by checking quantity
+$query3 = "SELECT quantity FROM in_cart WHERE Cart_ID = '$user_cart' AND ISBN = '$ISBN' AND Book_Cond = '$Book_Cond'";
+$result3 = mysqli_query($myconnection, $query3) or die ('Query failed: ' . mysql_error());
+$row3 = mysqli_fetch_array($result3, MYSQLI_ASSOC);
+
+if($row3 != NULL) { //book already in cart add one to quantity
+	$query3a = "UPDATE in_cart SET quantity = (SELECT quantity FROM in_cart WHERE Cart_ID = '$user_cart' AND ISBN 
+	= '$ISBN' AND Book_Cond = '$Book_Cond') + 1 WHERE Cart_ID = '$user_cart' AND ISBN = '$ISBN' AND Book_Cond = '$Book_Cond'";
+	$result3a = mysqli_query($myconnection, $query3a) or die ('Query failed: ' . mysql_error());
+}
+else { //book is not in cart so create it
+	$query3b = "INSERT INTO in_cart VALUES('$user_cart', '$ISBN', '$Book_Cond', 1)";
+	$result3b = mysqli_query($myconnection, $query3b) or die ('Query failed: ' . mysql_error());
+}
+
 
 //update the date of the last update to the cart
 
-$query3 = "UPDATE shopping_cart SET Last_Updated = '$date' WHERE Cart_ID = '$user_cart'";
-$result3 = mysqli_query($myconnection, $query3) or die ('Query failed: ' . mysql_error());
+$query4 = "UPDATE shopping_cart SET Last_Updated = '$date' WHERE Cart_ID = '$user_cart'";
+$result4 = mysqli_query($myconnection, $query4) or die ('Query failed: ' . mysql_error());
 
-mysqli_free_result($result4);
+mysqli_free_result($result2);
 
 mysqli_close($myconnection);
 ?>
