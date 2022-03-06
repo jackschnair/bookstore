@@ -84,7 +84,7 @@ mysqli_close($myconnection);
 ?>
 </table>
 <br />
-<a href = "checkout.php">Proceed to Checkout</a>
+<a href = "checkout.html">Proceed to Checkout</a>
 </body>
 </html>
 
