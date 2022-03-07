@@ -48,12 +48,74 @@ $result4 = mysqli_query($myconnection, $query4) or die ('Query failed: ' . mysql
 $row4 = mysqli_fetch_array($result4, MYSQLI_ASSOC);
 $new_order_num = $row4["new_order"];
 
-//create order
-$query5 = "INSERT INTO orders VALUES('$new_order_num', '$date', (SELECT SUM(price) + SUM(def_shipping_cost) FROM book
-WHERE ISBN IN (SELECT ISBN FROM in_cart WHERE cart_ID = (SELECT cart_ID FROM has_cart WHERE email = '$Email'))), '$Email', '$Card_num')";
+
+//figure out if user has membership or not to calculate shipping costs
+$query5 = "SELECT membership FROM customer WHERE email = '$Email'";
 $result5 = mysqli_query($myconnection, $query5) or die ('Query failed: ' . mysql_error());
 
-//insert books into in_order and remove books from shopping cart
+$row5 = mysqli_fetch_array($result5, MYSQLI_ASSOC);
+$Membership = $row5["membership"];
+
+
+//if user is a guest or non-member apply standard shipping
+if($Membership == NULL || $Membership == 0) { 
+	//create order
+	$query6 = "INSERT INTO orders VALUES('$new_order_num', '$date', (SELECT SUM(price) + SUM(def_shipping_cost) FROM book
+	WHERE ISBN IN (SELECT ISBN FROM in_cart WHERE cart_ID = (SELECT cart_ID FROM has_cart WHERE email = '$Email'))), '$Email', '$Card_num')";
+	$result6 = mysqli_query($myconnection, $query6) or die ('Query failed: ' . mysql_error());
+
+	//insert books into in_order and remove books from shopping cart
+
+	//to do that we must first obtain a list of all the books, their conditions and types
+	$query7 = "SELECT i.ISBN, i.book_cond, type, quantity, def_shipping_cost FROM book b, in_cart i WHERE i.ISBN = b.ISBN AND i.book_cond = b.book_cond AND cart_ID = 
+	(SELECT cart_ID from has_cart WHERE email = '$Email')";
+	$result7 = mysqli_query($myconnection, $query7) or die ('Query failed: ' . mysql_error());
+	
+	//here is where we actually copy all of the data over
+	while($row7 = mysqli_fetch_array($result7, MYSQLI_ASSOC)) {
+		$ISBN_to_add = $row7["ISBN"];
+		$Book_cond_to_add = $row7["book_cond"];
+		$Quantity_to_add = $row7["quantity"];
+		$Shipping_to_add = $row7["def_shipping_cost"];
+		if($row7["type"] == "Digital") {
+			
+			$query8 = "INSERT INTO in_order VALUES('$new_order_num', '$ISBN_to_add', '$Book_cond_to_add', '$Quantity_to_add',
+			'download', 'na', 0)";
+			$result8 = mysqli_query($myconnection, $query8) or die ('Query failed: ' . mysql_error());
+		}
+		else {
+			$query9 = "INSERT INTO in_order VALUES('$new_order_num', '$ISBN_to_add', '$Book_cond_to_add', '$Quantity_to_add',
+			'standard', 'na', '$Shipping_to_add')";
+			$result9 = mysqli_query($myconnection, $query9) or die ('Query failed: ' . mysql_error());
+
+		}
+
+	}
+
+
+	mysqli_free_result($result7);
+
+}
+else {
+	echo "Should not be here yet";
+	//create order
+	$query5b = "INSERT INTO orders VALUES('$new_order_num', '$date', (SELECT SUM(price) FROM book
+	WHERE ISBN IN (SELECT ISBN FROM in_cart WHERE cart_ID = (SELECT cart_ID FROM has_cart WHERE email = '$Email'))), '$Email', '$Card_num')";
+	$result5b = mysqli_query($myconnection, $query5b) or die ('Query failed: ' . mysql_error());
+	
+	//insert books into in_order and remove books from shopping cart
+
+}
+
+//remove the old data from the old cart
+$query10 = "DELETE FROM in_cart WHERE Cart_ID = (SELECT Cart_ID FROM has_cart WHERE email = '$Email')";
+$result10 = mysqli_query($myconnection, $query10) or die ('Query failed: ' . mysql_error());
+
+
+mysqli_free_result($result);
+mysqli_free_result($result2);
+mysqli_free_result($result4);
+mysqli_free_result($result5);
 
 echo "Finished checkout!";
 
