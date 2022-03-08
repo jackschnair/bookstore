@@ -61,8 +61,9 @@ $Membership = $row5["membership"];
 //if user is a guest or non-member apply standard shipping
 if($Membership == NULL || $Membership == 0) { 
 	//create order
-	$query6 = "INSERT INTO orders VALUES('$new_order_num', '$date', (SELECT SUM(price) + SUM(def_shipping_cost) FROM book
-	WHERE ISBN IN (SELECT ISBN FROM in_cart WHERE cart_ID = (SELECT cart_ID FROM has_cart WHERE email = '$Email'))), '$Email', '$Card_num')";
+	$query6 = "INSERT INTO orders VALUES('$new_order_num', '$date', (SELECT SUM(price * quantity) + SUM(def_shipping_cost) 
+	FROM book b, in_cart i WHERE b.ISBN = i.ISBN AND b.Book_Cond = i.Book_Cond AND cart_ID = (SELECT cart_ID FROM has_cart WHERE email 
+	= '$Email')), '$Email', '$Card_num')";
 	$result6 = mysqli_query($myconnection, $query6) or die ('Query failed: ' . mysql_error());
 
 	//insert books into in_order
@@ -99,8 +100,9 @@ if($Membership == NULL || $Membership == 0) {
 }
 else {
 	//create order
-	$query6a = "INSERT INTO orders VALUES('$new_order_num', '$date', (SELECT SUM(price) FROM book
-	WHERE ISBN IN (SELECT ISBN FROM in_cart WHERE cart_ID = (SELECT cart_ID FROM has_cart WHERE email = '$Email'))), '$Email', '$Card_num')";
+	$query6a = "INSERT INTO orders VALUES('$new_order_num', '$date', (SELECT SUM(price * quantity) 
+	FROM book b, in_cart i WHERE b.ISBN = i.ISBN AND b.Book_Cond = i.Book_Cond AND cart_ID = (SELECT cart_ID FROM has_cart WHERE email 
+	= '$Email')), '$Email', '$Card_num')";
 	$result6a = mysqli_query($myconnection, $query6a) or die ('Query failed: ' . mysql_error());
 
 	//insert books into in_order
