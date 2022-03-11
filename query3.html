@@ -12,17 +12,22 @@
 <td> <input type = "text" name = "ISBN" maxlength = "13" /> </td>
 </tr>
 <tr>
-<td> Book Condition: </td>
-<td> <input type = "text" name = "Book_Cond" maxlength = "10" /> </td>
+<td> Book Cond: </td>
+<td> 
+<select name = "Book_Cond" id = "Book_Cond">
+<option value = "used">Used</option>
+<option value = "new">New</option>
+</select>
+</td>
 </tr>
 <tr>
 <td> New shipping price: </td>
-<td> <input type = "text" name = "shipping_price" maxlength = "8" /> </td>
+<td> <input type = "text" name = "shipping_cost" maxlength = "8" /> </td>
 </tr>
 </table>
 <br />
 <input type = "reset" value = "Reset" />
-<input type = "submit" value="submit"/>
+<input type = "submit" value="Submit"/>
 </form>
 <br />
 <br />

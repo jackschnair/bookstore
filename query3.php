@@ -10,7 +10,7 @@ $myconnection = mysqli_connect('localhost', 'root', '') or die ('Could not conne
 
 $mydb = mysqli_select_db ($myconnection, 'bookstore') or die ('Could not select database');
 
-$query = "UPDATE Book SET Trade_Value = '$Shipping_Cost' WHERE ISBN = '$ISBN' AND Book_cond = '$Book_Cond'";
+$query = "UPDATE Book SET Def_Shipping_Cost = '$Shipping_Cost' WHERE ISBN = '$ISBN' AND Book_cond = '$Book_Cond'";
 
 $result = mysqli_query($myconnection, $query) or die ('Query failed: ' . mysql_error());
 

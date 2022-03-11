@@ -13,6 +13,7 @@
 <td><b><u>ISBN</b></u></td>
 <td><b><u>Condition</b></u></td>
 <td><b><u>Type</b></u></td>
+<td><b><u>Price</b></u></td>
 <td><b><u>Add to Cart</b></u></td>
 </tr>
 <?php
@@ -21,7 +22,7 @@ $myconnection = mysqli_connect('localhost', 'root', '')
 
 $mydb = mysqli_select_db ($myconnection, 'bookstore') or die ('Could not select database');
 
-$query = 'SELECT title, author, genre, ISBN, Book_Cond, type from Book';
+$query = 'SELECT title, author, genre, ISBN, Book_Cond, type, price FROM book';
 $result = mysqli_query($myconnection, $query) or die ('Query failed: ' . mysql_error());
 
 while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
@@ -45,6 +46,9 @@ while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 	echo "</td>";
 	echo "<td>";
 	echo $row["type"];
+	echo "</td>";
+	echo "<td>";
+	echo '$' . $row["price"];
 	echo "</td>";
 	echo "<td><form action = \"addtocart.php\" method = \"Post\">";
 	echo "<input type = \"hidden\" name = \"ISBN\" value = \"$ISBN\">";

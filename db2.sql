@@ -32,7 +32,7 @@ INSERT INTO User VALUES('ojsimp@hotmail.com', 'OJ Simpson', '3734567897');
 INSERT INTO User VALUES('bobsbugsbegone@gmail.com', 'Bob Duncan', '4546675464');
 INSERT INTO User VALUES('imricherthanyou@rcn.com', 'Bill Gates', '9998887777');
 INSERT INTO User VALUES('tesla@gmail.com', 'Elon Musk', '5657678877');
-INSERT INTO User(Email) VALUES('SPECIAL');
+INSERT INTO User VALUES('SPECIAL', 'na', '0');
 INSERT INTO User VALUES('Scholastic@gmail.com', 'Peter Warwick', '73878347');
 INSERT INTO User VALUES('Boombastic@yahoo.com', 'Biggie Cheese', '489328747');
 INSERT INTO User VALUES('McGraw@gmail.com', 'Simon Allen', '1238914914');
@@ -48,7 +48,7 @@ CREATE TABLE Customer (
 	ON UPDATE CASCADE
 );
 
-INSERT INTO Customer(Email, Password) VALUES('SPECIAL', 'securepassword');
+INSERT INTO Customer VALUES('SPECIAL', 'na', 'securepassword', True);
 INSERT INTO Customer VALUES('elmo@gmail.com', 'elmo', 'password', False);
 INSERT INTO Customer VALUES('larry_david@gmail.com', 'LDMaster', 'curb',True);
 INSERT INTO Customer VALUES('jerry@gmail.com', 'jerry', 'seinfeld',True);
@@ -105,11 +105,18 @@ DELETE CASCADE ON UPDATE CASCADE
 
 INSERT INTO Book VALUES('1234455677', 'used', 'Moby Dick', 'Herman Melville', 1, 'Adventure', '1851-10-15', 'Hard Cover', 15.15, 'Harper Collins', 50, 3.00, 3.99);
 INSERT INTO Book VALUES('1477325925', 'new', 'The Great Gatsby', 'F Scott Fitzgerald', 0, 'Novel','1925-04-10', 'PaperBack', 5.99, 'Scholastic',102, NULL, 3.99);
-INSERT INTO Book VALUES('8325787825', 'new', 'A Way in the Life', 'Larry David', 5, 'Comedy', '2013-07-01', 'Digital', 7.99, 'Biggie Cheese Inc', 30, NULL, 3.99);
+INSERT INTO Book VALUES('8325787825', 'new', 'A Way in the Life', 'Larry David', 5, 'Comedy', '2013-07-01', 'Digital', 7.99, 'Biggie Cheese Inc', 30, NULL, 0);
 INSERT INTO Book VALUES('8932578825', 'new', 'Cyrano De Bergerac', 'Edmond Rostand', 10, 'Drama', '1640-01-01', 'Audio', 10.99, 'Hachette Livre', 40, NULL, 3.99);
 INSERT INTO Book VALUES('3288324823', 'used', 'The Seinfeld Scripts', 'Larry David',9, 'Non Fiction', '1998-01-01', 'PaperBack', 10.99, 'McGraw Hill', 60, 5.00, 3.99);
 INSERT INTO Book VALUES('8437548384', 'used', 'If I Did It', 'OJ Simpson', 1, 'Fiction', '2007-09-07', 'Hard Cover', 10.99, 'McGraw Hill', 7, 5.00, 3.99);
 INSERT INTO Book VALUES('574954985945', 'used', 'Le Petit Prince', 'Antoine de Saint Exupery', 7, 'Fiction', '1943-04-06', 'PaperBack', 20.99, 'McGraw Hill', 0, 7.00, 3.99);
+INSERT INTO Book VALUES('1234455677', 'new', 'Moby Dick', 'Herman Melville', 1, 'Adventure', '1851-10-15', 'Hard Cover', 20.15, 'Harper Collins', 50, NULL, 3.99);
+INSERT INTO Book VALUES('1477325925', 'used', 'The Great Gatsby', 'F Scott Fitzgerald', 0, 'Novel','1925-04-10', 'PaperBack', 2.99, 'Scholastic',102, NULL, 3.99);
+INSERT INTO Book VALUES('8932578825', 'used', 'Cyrano De Bergerac', 'Edmond Rostand', 10, 'Drama', '1640-01-01', 'Audio', 5.99, 'Hachette Livre', 40, NULL, 3.99);
+INSERT INTO Book VALUES('3288324823', 'new', 'The Seinfeld Scripts', 'Larry David',9, 'Non Fiction', '1998-01-01', 'PaperBack', 15.99, 'McGraw Hill', 60, NULL, 3.99);
+INSERT INTO Book VALUES('8437548384', 'new', 'If I Did It', 'OJ Simpson', 1, 'Fiction', '2007-09-07', 'Hard Cover', 15.99, 'McGraw Hill', 7, NULL, 3.99);
+INSERT INTO Book VALUES('574954985945', 'new', 'Le Petit Prince', 'Antoine de Saint Exupery', 7, 'Fiction', '1943-04-06', 'PaperBack', 25.99, 'McGraw Hill', 0, NULL, 3.99);
+
 
 
 CREATE TABLE Payment_info(
@@ -264,24 +271,25 @@ CREATE TABLE In_Cart (
 	Cart_ID INTEGER,
 ISBN VARCHAR(20),
 	Book_Cond VARCHAR(10),
+	Quantity INTEGER NOT NULL,
 FOREIGN KEY (ISBN, Book_Cond) REFERENCES Book(ISBN, Book_Cond) ON DELETE CASCADE ON UPDATE CASCADE,
 	FOREIGN KEY (Cart_ID) REFERENCES Shopping_Cart(Cart_ID) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
-INSERT INTO In_Cart VALUES(1001, '1234455677', 'used');
-INSERT INTO In_Cart VALUES(1001, '1477325925', 'new');
-INSERT INTO In_Cart VALUES(1001, '8325787825', 'new');
-INSERT INTO In_Cart VALUES(1001, '8932578825', 'new');
-INSERT INTO In_Cart VALUES(1001, '3288324823', 'used');
-INSERT INTO In_Cart VALUES(1001, '8437548384', 'used');
-INSERT INTO In_Cart VALUES(1001, '574954985945', 'used');
-INSERT INTO In_Cart VALUES(1002, '8325787825', 'new');
-INSERT INTO In_Cart VALUES(1002, '8932578825', 'new');
-INSERT INTO In_Cart VALUES(1003, '574954985945', 'used');
-INSERT INTO In_Cart VALUES(1004, '1477325925', 'new');
-INSERT INTO In_Cart VALUES(1004, '8325787825', 'new');
-INSERT INTO In_Cart VALUES(1004, '8932578825', 'new');
-INSERT INTO In_Cart VALUES(1005, '3288324823', 'used');
+INSERT INTO In_Cart VALUES(1001, '1234455677', 'used', 1);
+INSERT INTO In_Cart VALUES(1001, '1477325925', 'new', 1);
+INSERT INTO In_Cart VALUES(1001, '8325787825', 'new', 1);
+INSERT INTO In_Cart VALUES(1001, '8932578825', 'new', 1);
+INSERT INTO In_Cart VALUES(1001, '3288324823', 'used', 1);
+INSERT INTO In_Cart VALUES(1001, '8437548384', 'used', 1);
+INSERT INTO In_Cart VALUES(1001, '574954985945', 'used', 1);
+INSERT INTO In_Cart VALUES(1002, '8325787825', 'new', 1);
+INSERT INTO In_Cart VALUES(1002, '8932578825', 'new', 1);
+INSERT INTO In_Cart VALUES(1003, '574954985945', 'used', 1);
+INSERT INTO In_Cart VALUES(1004, '1477325925', 'new', 1);
+INSERT INTO In_Cart VALUES(1004, '8325787825', 'new', 5);
+INSERT INTO In_Cart VALUES(1004, '8932578825', 'new', 1);
+INSERT INTO In_Cart VALUES(1005, '3288324823', 'used', 1);
 
 
 CREATE TABLE Has_Cart (
