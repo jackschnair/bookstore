@@ -79,7 +79,7 @@ if($Membership == NULL || $Membership == 0) {
 		$Book_cond_to_add = $row7["book_cond"];
 		$Quantity_to_add = $row7["quantity"];
 		$Shipping_to_add = $row7["def_shipping_cost"];
-		$Curr_price = $row7["price"];
+		$Curr_price = $row7["price"] * $row7["quantity"];
 		if($row7["type"] == "Digital") {
 			
 			$query8 = "INSERT INTO in_order VALUES('$new_order_num', '$ISBN_to_add', '$Book_cond_to_add', '$Quantity_to_add',
@@ -118,7 +118,7 @@ else {
 		$ISBN_to_add = $row7a["ISBN"];
 		$Book_cond_to_add = $row7a["book_cond"];
 		$Quantity_to_add = $row7a["quantity"];
-		$Curr_price = $row7a["price"];
+		$Curr_price = $row7a["price"] * $row7a["quantity"];
 		if($row7a["type"] == "Digital") {
 			
 			$query8a = "INSERT INTO in_order VALUES('$new_order_num', '$ISBN_to_add', '$Book_cond_to_add', '$Quantity_to_add',
