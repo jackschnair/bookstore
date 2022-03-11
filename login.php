@@ -44,7 +44,7 @@ mysqli_close($myconnection);
 <td> <input type = "text" name = "Email" maxlength = "20" /> </td>
 </tr>
 <tr>
-<td> Pasword: </td>
+<td> Password: </td>
 <td> <input type = "password" name = "Password" maxlength = "20" /> </td>
 </tr>
 </table>
