@@ -203,21 +203,22 @@ CREATE TABLE In_Order (
 	Shipping_Method VARCHAR(20) NOT NULL,
 	Shipping_Addr VARCHAR(100) NOT NULL,
 	Shipping_Cost REAL NOT NULL,
+	Price_Bought REAL NOT NULL,
 	FOREIGN KEY (Order_Num) REFERENCES Orders(Order_Num) ON DELETE CASCADE ON UPDATE CASCADE,
 FOREIGN KEY (ISBN, Book_Cond) REFERENCES Book(ISBN, Book_Cond)
 );
 	
-INSERT INTO In_Order VALUES(100, '1234455677', 'used', 1, 'standard', 'Maple st. 84', 3.99);
-INSERT INTO In_Order VALUES(100, '1477325925', 'new', 2, 'express', 'Maple st. 84', 5.99);
-INSERT INTO In_Order VALUES(101, '3288324823', 'used', 1, 'standard', 'Farley st. 23', 2.99);
-INSERT INTO In_Order VALUES(102, '8437548384', 'used', 2, 'standard', 'Burner st. 51', 3.99);
-INSERT INTO In_Order VALUES(102, '8932578825', 'new',1, 'download', 'Curly st. 42', 1.99);
-INSERT INTO In_Order VALUES(103, '8325787825', 'new',1, 'download', 'Waverly pl. 3', 4.99);
-INSERT INTO In_Order VALUES(104, '1234455677', 'used',1, 'standard', 'Cod rd. 96', 3.99);
-INSERT INTO In_Order VALUES(105, '1477325925', 'new',1, 'standard', 'Milk st. 105', 0);
-INSERT INTO In_Order VALUES(106, '8932578825', 'new',1, 'download', 'Summer st. 5', 0);
-INSERT INTO In_Order VALUES(107, '8932578825', 'new',1, 'download', 'Milk st. 105', 0);
-INSERT INTO In_Order VALUES(108, '1477325925', 'new',1, 'standard', 'Friend st. 66', 0);
+INSERT INTO In_Order VALUES(100, '1234455677', 'used', 1, 'standard', 'Maple st. 84', 3.99, 5.99);
+INSERT INTO In_Order VALUES(100, '1477325925', 'new', 2, 'express', 'Maple st. 84', 5.99, 7.99);
+INSERT INTO In_Order VALUES(101, '3288324823', 'used', 1, 'standard', 'Farley st. 23', 2.99, 8.99);
+INSERT INTO In_Order VALUES(102, '8437548384', 'used', 2, 'standard', 'Burner st. 51', 3.99, 20.99);
+INSERT INTO In_Order VALUES(102, '8932578825', 'new',1, 'download', 'Curly st. 42', 1.99, 15.99);
+INSERT INTO In_Order VALUES(103, '8325787825', 'new',1, 'download', 'Waverly pl. 3', 4.99, 15.99);
+INSERT INTO In_Order VALUES(104, '1234455677', 'used',1, 'standard', 'Cod rd. 96', 3.99, 14.99);
+INSERT INTO In_Order VALUES(105, '1477325925', 'new',1, 'standard', 'Milk st. 105', 0, 12.99);
+INSERT INTO In_Order VALUES(106, '8932578825', 'new',1, 'download', 'Summer st. 5', 0, 13.99);
+INSERT INTO In_Order VALUES(107, '8932578825', 'new',1, 'download', 'Milk st. 105', 0, 29.99);
+INSERT INTO In_Order VALUES(108, '1477325925', 'new',1, 'standard', 'Friend st. 66', 0, 50.99);
 
 CREATE TABLE Rating (
 	Rate_ID INTEGER PRIMARY KEY,
