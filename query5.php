@@ -19,7 +19,7 @@ if (is_null($Year) || $Year == "") { // user didn't enter year
     //echo $result;
 }
 else { // searches for best selling books of that year
-    $query = "";
+    $query = "SELECT Title FROM Book,(SELECT ISBN, MAX(Sold) FROM (SELECT ISBN, sum(quantity) as Sold FROM in_order WHERE ISBN = (SELECT ISBN FROM Book WHERE Date_Published LIKE "%2013%") GROUP BY ISBN )) t1 WHERE Book.ISBN = t1.ISBN";
     $result = mysqli_query($myconnection, $query) or die ('Query failed: ' . mysql_error());
 }
 mysqli_close($myconnection);
