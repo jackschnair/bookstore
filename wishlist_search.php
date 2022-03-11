@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Book Purchase</title>
+<title>Wish List</title>
 </head>
 <body>
-<h1>Buy A Book</h1>
+<h1>Wish List</h1>
 <table border = "1">
 <tr>
 <td><b><u>Title</b></u></td>
@@ -18,12 +18,17 @@
 <td><b><u>Add to Wishlist</b></u></td>
 </tr>
 <?php
+
+$Email = $_POST['email'];
+
 $myconnection = mysqli_connect('localhost', 'root', '') 
     or die ('Could not connect: ' . mysql_error());
 
 $mydb = mysqli_select_db ($myconnection, 'bookstore') or die ('Could not select database');
 
-$query = 'SELECT title, author, genre, ISBN, Book_Cond, type, price FROM book';
+
+$query = "SELECT title, author, genre, ISBN, Book_Cond, type, price FROM book WHERE (ISBN, Book_Cond) IN 
+(SELECT ISBN, Book_Cond FROM on_wishlist WHERE email = '$Email')";
 $result = mysqli_query($myconnection, $query) or die ('Query failed: ' . mysql_error());
 
 while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
@@ -66,6 +71,7 @@ mysqli_free_result($result);
 mysqli_close($myconnection);
 ?>
 </table>
+<br />
 </body>
 </html>
 

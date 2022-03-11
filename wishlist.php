@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Book Purchase</title>
+<title>Wish List</title>
 </head>
 <body>
-<h1>Buy A Book</h1>
+<h1>Wish List</h1>
 <table border = "1">
 <tr>
 <td><b><u>Title</b></u></td>
@@ -15,15 +15,21 @@
 <td><b><u>Type</b></u></td>
 <td><b><u>Price</b></u></td>
 <td><b><u>Add to Cart</b></u></td>
-<td><b><u>Add to Wishlist</b></u></td>
+<td><b><u>Remove</b></u></td>
 </tr>
 <?php
+
+session_start();
+$Email = $_SESSION['Email'];
+
 $myconnection = mysqli_connect('localhost', 'root', '') 
     or die ('Could not connect: ' . mysql_error());
 
 $mydb = mysqli_select_db ($myconnection, 'bookstore') or die ('Could not select database');
 
-$query = 'SELECT title, author, genre, ISBN, Book_Cond, type, price FROM book';
+
+$query = "SELECT title, author, genre, ISBN, Book_Cond, type, price FROM book WHERE (ISBN, Book_Cond) IN 
+(SELECT ISBN, Book_Cond FROM on_wishlist WHERE email = '$Email')";
 $result = mysqli_query($myconnection, $query) or die ('Query failed: ' . mysql_error());
 
 while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
@@ -55,10 +61,10 @@ while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 	echo "<input type = \"hidden\" name = \"ISBN\" value = \"$ISBN\">";
 	echo "<input type = \"hidden\" name = \"Book_Cond\" value = \"$Book_Cond\">";
 	echo "<input type = \"submit\" value = \"Add to Cart\"></form></td>";
-	echo "<td><form action = \"addtowish.php\" method = \"Post\">";
+	echo "<td><form action = \"remove_wish.php\" method = \"Post\">";
 	echo "<input type = \"hidden\" name = \"ISBN\" value = \"$ISBN\">";
 	echo "<input type = \"hidden\" name = \"Book_Cond\" value = \"$Book_Cond\">";
-	echo "<input type = \"submit\" value = \"Add to Wishlist\"></form></td>";
+	echo "<input type = \"submit\" value = \"Remove\"></form></td>";
 	echo "</tr>";
 }
 
@@ -66,6 +72,7 @@ mysqli_free_result($result);
 mysqli_close($myconnection);
 ?>
 </table>
+<br />
 </body>
 </html>
 

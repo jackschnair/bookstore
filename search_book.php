@@ -15,6 +15,7 @@
 <td><b><u>Type</b></u></td>
 <td><b><u>Price</b></u></td>
 <td><b><u>Add to Cart</b></u></td>
+<td><b><u>Add to Wishlist</b></u></td>
 </tr>
 <?php
 $info = $_POST['info'];
@@ -57,6 +58,10 @@ while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 	echo "<input type = \"hidden\" name = \"ISBN\" value = \"$ISBN\">";
 	echo "<input type = \"hidden\" name = \"Book_Cond\" value = \"$Book_Cond\">";
 	echo "<input type = \"submit\" value = \"Add to Cart\"></form></td>";
+	echo "<td><form action = \"addtowish.php\" method = \"Post\">";
+	echo "<input type = \"hidden\" name = \"ISBN\" value = \"$ISBN\">";
+	echo "<input type = \"hidden\" name = \"Book_Cond\" value = \"$Book_Cond\">";
+	echo "<input type = \"submit\" value = \"Add to Wishlist\"></form></td>";
 	echo "</tr>";
 }
 
@@ -95,6 +100,10 @@ while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 	echo "<input type = \"hidden\" name = \"ISBN\" value = \"$ISBN\">";
 	echo "<input type = \"hidden\" name = \"Book_Cond\" value = \"$Book_Cond\">";
 	echo "<input type = \"submit\" value = \"Add to Cart\"></form></td>";
+	echo "<td><form action = \"addtowish.php\" method = \"Post\">";
+	echo "<input type = \"hidden\" name = \"ISBN\" value = \"$ISBN\">";
+	echo "<input type = \"hidden\" name = \"Book_Cond\" value = \"$Book_Cond\">";
+	echo "<input type = \"submit\" value = \"Add to Wishlist\"></form></td>";
 	echo "</tr>";
 }
 
@@ -133,6 +142,10 @@ while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 	echo "<input type = \"hidden\" name = \"ISBN\" value = \"$ISBN\">";
 	echo "<input type = \"hidden\" name = \"Book_Cond\" value = \"$Book_Cond\">";
 	echo "<input type = \"submit\" value = \"Add to Cart\"></form></td>";
+	echo "<td><form action = \"addtowish.php\" method = \"Post\">";
+	echo "<input type = \"hidden\" name = \"ISBN\" value = \"$ISBN\">";
+	echo "<input type = \"hidden\" name = \"Book_Cond\" value = \"$Book_Cond\">";
+	echo "<input type = \"submit\" value = \"Add to Wishlist\"></form></td>";
 	echo "</tr>";
 }
 
@@ -171,6 +184,10 @@ while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 	echo "<input type = \"hidden\" name = \"ISBN\" value = \"$ISBN\">";
 	echo "<input type = \"hidden\" name = \"Book_Cond\" value = \"$Book_Cond\">";
 	echo "<input type = \"submit\" value = \"Add to Cart\"></form></td>";
+	echo "<td><form action = \"addtowish.php\" method = \"Post\">";
+	echo "<input type = \"hidden\" name = \"ISBN\" value = \"$ISBN\">";
+	echo "<input type = \"hidden\" name = \"Book_Cond\" value = \"$Book_Cond\">";
+	echo "<input type = \"submit\" value = \"Add to Wishlist\"></form></td>";
 	echo "</tr>";
 }
 

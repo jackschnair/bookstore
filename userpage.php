@@ -14,11 +14,17 @@ echo "Welcome " . $_SESSION['Email'];
 <body>
 <h1>User Page</h1>
 <hr />
-<a href = "book_list.php">Book Search</a>
+<a href = "search_book.html">Book Search</a>
+<br />
+<a href = "book_list.php">View Books</a>
 <br />
 <a href = "shopping_cart.php">Shopping Cart</a>
 <br />
 <a href = "member.php">Membership Settings</a>
+<br />
+<a href = "wishlist.php">Wish List</a>
+<br />
+<a href = "wishlist_search.html">Search for a Wish List</a>
 <br />
 <?php
 $Email = $_SESSION['Email'];
