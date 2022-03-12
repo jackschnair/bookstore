@@ -44,16 +44,17 @@ CREATE TABLE Customer (
 	Username VARCHAR(20) NOT NULL,
 	Password VARCHAR(20) NOT NULL,
 	Membership BOOLEAN,
+	Store_Credit REAL,
 	FOREIGN KEY (Email) REFERENCES User(Email) ON DELETE CASCADE
 	ON UPDATE CASCADE
 );
 
-INSERT INTO Customer VALUES('SPECIAL', 'na', 'securepassword', True);
-INSERT INTO Customer VALUES('elmo@gmail.com', 'elmo', 'password', False);
-INSERT INTO Customer VALUES('larry_david@gmail.com', 'LDMaster', 'curb',True);
-INSERT INTO Customer VALUES('jerry@gmail.com', 'jerry', 'seinfeld',True);
-INSERT INTO Customer VALUES('barney@gmail.com', 'dinosaur', 'taildrugs', False);
-INSERT INTO Customer VALUES('spongebob@gmail.com', 'bob12', 'squarepants', False);
+INSERT INTO Customer VALUES('SPECIAL', 'na', 'securepassword', True, 0);
+INSERT INTO Customer VALUES('elmo@gmail.com', 'elmo', 'password', False, 10.50);
+INSERT INTO Customer VALUES('larry_david@gmail.com', 'LDMaster', 'curb',True, 3.50);
+INSERT INTO Customer VALUES('jerry@gmail.com', 'jerry', 'seinfeld',True, 0);
+INSERT INTO Customer VALUES('barney@gmail.com', 'dinosaur', 'taildrugs', False, 0);
+INSERT INTO Customer VALUES('spongebob@gmail.com', 'bob12', 'squarepants', False, 5.00);
 
 CREATE TABLE Guest(
 	Email VARCHAR(40),

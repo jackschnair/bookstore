@@ -14,8 +14,10 @@
 <td><b><u>Condition</b></u></td>
 <td><b><u>Type</b></u></td>
 <td><b><u>Price</b></u></td>
+<td><b><u>Trade Value</b></u></td>
 <td><b><u>Add to Cart</b></u></td>
 <td><b><u>Add to Wishlist</b></u></td>
+<td><b><u>Trade In</b></u></td>
 </tr>
 <?php
 $myconnection = mysqli_connect('localhost', 'root', '') 
@@ -23,7 +25,7 @@ $myconnection = mysqli_connect('localhost', 'root', '')
 
 $mydb = mysqli_select_db ($myconnection, 'bookstore') or die ('Could not select database');
 
-$query = 'SELECT title, author, genre, ISBN, Book_Cond, type, price FROM book';
+$query = 'SELECT title, author, genre, ISBN, Book_Cond, type, price, trade_value FROM book';
 $result = mysqli_query($myconnection, $query) or die ('Query failed: ' . mysql_error());
 
 while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
@@ -51,6 +53,16 @@ while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 	echo "<td>";
 	echo '$' . $row["price"];
 	echo "</td>";
+	echo "<td>";
+	if($row["trade_value"] != NULL)
+	{
+		echo '$' . $row["trade_value"];
+	}
+	else
+	{
+		echo "N/A";
+	}
+	echo "</td>";
 	echo "<td><form action = \"addtocart.php\" method = \"Post\">";
 	echo "<input type = \"hidden\" name = \"ISBN\" value = \"$ISBN\">";
 	echo "<input type = \"hidden\" name = \"Book_Cond\" value = \"$Book_Cond\">";
@@ -59,6 +71,16 @@ while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 	echo "<input type = \"hidden\" name = \"ISBN\" value = \"$ISBN\">";
 	echo "<input type = \"hidden\" name = \"Book_Cond\" value = \"$Book_Cond\">";
 	echo "<input type = \"submit\" value = \"Add to Wishlist\"></form></td>";
+	if($row["trade_value"] != NULL)
+	{
+		echo "<td><form action = \"trade.php\" method = \"Post\">";
+		echo "<input type = \"hidden\" name = \"ISBN\" value = \"$ISBN\">";
+		echo "<input type = \"submit\" value = \"Trade\"></form></td>";
+	}
+	else
+	{
+		echo "<td>N/A</td>";
+	}
 	echo "</tr>";
 }
 
