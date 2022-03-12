@@ -26,6 +26,8 @@ echo "Welcome " . $_SESSION['Email'];
 <br />
 <a href = "wishlist_search.html">Search for a Wish List</a>
 <br />
+<a href = "customer_order_history.php">Customer Settings</a>
+<br />
 <?php
 $Email = $_SESSION['Email'];
 
