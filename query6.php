@@ -8,13 +8,36 @@ $myconnection = mysqli_connect('localhost', 'root', '') or die ('Could not conne
 
 $mydb = mysqli_select_db ($myconnection, 'bookstore') or die ('Could not select database');
 
-$query = "SELECT DISTINCT B.Title FROM Orders A, book B, in_order C WHERE A.Order_Num = '$Order_Num' AND A.Email = '$Email'AND A.Order_Num = C.Order_Num AND B.ISBN = C.ISBN";
+$query = "SELECT DISTINCT * FROM Orders A, book B, in_order C WHERE A.Order_Num = '$Order_Num' AND A.Email = '$Email'AND A.Order_Num = C.Order_Num AND B.ISBN = C.ISBN AND B.Book_Cond = C.Book_Cond";
 
 $result = mysqli_query($myconnection, $query) or die ('Query failed: ' . mysql_error());
 
-while ($row = mysqli_fetch_array ($result, MYSQLI_ASSOC)) {    
-   echo $row["Title"];
-   echo "<br>";
+echo "<table border = 1>";
+echo "<tr>";
+echo "<td>Title  </td>";
+echo "<td>ISBN  </td>";
+echo "<td>Book Condition  </td>";
+echo "<td>type  </td>";
+echo "<td>Order number  </td>";
+echo "<td>Quantity  </td>";
+echo "<td>Price bought  </td>";
+echo "<td>shipping method  </td>";
+echo "<td>shipping address  </td>";
+echo "</tr>";
+while ($row = mysqli_fetch_array ($result, MYSQLI_ASSOC)) { 
+	echo "<tr>";
+  	echo "<td>" . $row['Title'] . "</td>";
+  	echo "<td>" . $row['ISBN'] . "</td>";
+	echo "<td>" . $row['Book_Cond'] . "</td>";
+	echo "<td>" . $row['Type'] . "</td>";
+	echo "<td>" . $row['Order_Num'] . "</td>";
+	echo "<td>" . $row['Quantity'] . "</td>";
+	echo "<td>" . $row['Price_Bought'] . "</td>";
+	echo "<td>" . $row['Shipping_Method'] . "</td>";
+	echo "<td>" . $row['Shipping_Addr'] . "</td>";
+ 	echo "</tr>";   
+   	
+	echo "<br>";
   }
 
 mysqli_free_result($result);
