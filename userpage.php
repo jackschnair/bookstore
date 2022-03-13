@@ -14,6 +14,25 @@ echo "Welcome " . $_SESSION['Email'];
 <body>
 <h1>User Page</h1>
 <hr />
+<?php 
+
+$Email = $_SESSION['Email'];
+
+$myconnection = mysqli_connect('localhost', 'root', '') 
+    or die ('Could not connect: ' . mysql_error());
+
+$mydb = mysqli_select_db ($myconnection, 'bookstore') or die ('Could not select database');
+
+$query = "SELECT store_credit FROM customer WHERE email = '$Email'";
+$result = mysqli_query($myconnection, $query) or die ('Query failed: ' . mysql_error());
+
+$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+
+echo "<p>You have $" . $row["store_credit"] . " in store credit</p>";
+
+?>
+
+<hr />
 <a href = "search_book.html">Book Search</a>
 <br />
 <a href = "book_list.php">View Books</a>

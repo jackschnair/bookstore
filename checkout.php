@@ -143,11 +143,31 @@ else {
 $query10 = "DELETE FROM in_cart WHERE Cart_ID = (SELECT Cart_ID FROM has_cart WHERE email = '$Email')";
 $result10 = mysqli_query($myconnection, $query10) or die ('Query failed: ' . mysql_error());
 
+//subtract any price from store credit if necc
+$query11 = "UPDATE customer SET store_credit = store_credit - (SELECT total_price FROM orders WHERE order_num = '$new_order_num') WHERE email = '$Email'";
+$result11 = mysqli_query($myconnection, $query11) or die ('Query failed: ' . mysql_error());
+
+//If we go below 0 store credit then the user must pay that much by card. Find that amount to display
+$query12 = "SELECT store_credit FROM customer WHERE email = '$Email'";
+$result12 = mysqli_query($myconnection, $query12) or die ('Query failed: ' . mysql_error());
+$row12 = mysqli_fetch_array($result12, MYSQLI_ASSOC);
+
+$amountOwed = 0;
+
+if($row12["store_credit"] < 0)
+{
+	$amountOwed = -($row12["store_credit"]);
+	$query13 = "UPDATE customer SET store_credit = 0 WHERE email = '$Email'";
+	$result13 = mysqli_query($myconnection, $query13) or die ('Query failed: ' . mysql_error());
+}
+
+echo "You will pay $" . $amountOwed . " by Card and the rest has been taken from your store credit balance.\n";
 
 mysqli_free_result($result);
 mysqli_free_result($result2);
 mysqli_free_result($result4);
 mysqli_free_result($result5);
+mysqli_free_result($result12);
 
 echo "Finished checkout!";
 
