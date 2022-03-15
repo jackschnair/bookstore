@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Guest Information</title>
+</head>
+<body>
+<h1>Guest Information</h1>
+<p>We'll need to gather some information from you before we can let you proceed...</p>
+<form action = "guest_info.php" method = "post">
+<table>
+<tr>
+<td>Your name: </td>
+<td><input type = "text" name="Name" maxlength = "26"></td>
+</tr>
+<tr>
+<td>Your email: </td>
+<td><input type = "text" name = "Email" maxlength = "40"></td>
+</tr>
+<tr>
+<td>Your phone number: </td>
+<td><input type = "text" name="Phone" maxlength = "11"></td>
+</tr>
+</table>
+<br />
+<input type = "reset" value = "Reset" />
+<input type = "submit" value="Submit"/>
+</form>
+</body>
+</html>
