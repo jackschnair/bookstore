@@ -50,9 +50,8 @@ while ($row = mysqli_fetch_array ($result, MYSQLI_ASSOC)) {
 	echo "<input type = \"hidden\" name = \"ISBN\" value = \"$ISBN\">";
 	echo "<input type = \"hidden\" name = \"Book_Cond\" value = \"$Book_Cond\">";
 	echo "<input type = \"submit\" value = \"Add to Cart\"></form></td>";
- 	echo "</tr>";   
-	echo "<br />";
-  }
+ 	echo "</tr>"; 
+}
 
 mysqli_free_result($result);
 mysqli_close($myconnection);
