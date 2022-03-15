@@ -45,7 +45,7 @@ echo "<p>You have $" . $row["store_credit"] . " in store credit</p>";
 <br />
 <a href = "wishlist_search.html">Search for a Wish List</a>
 <br />
-<a href = "customer_order_history.php">Customer Settings</a>
+<a href = "customer_order_history.php">Order History</a>
 <br />
 <?php
 $Email = $_SESSION['Email'];
