@@ -4,6 +4,7 @@ session_start();
 $Name = $_POST['Name'];
 $Phone = $_POST['Phone'];
 $Email = $_POST['Email'];
+$_SESSION['Email'] = $Email;
 $date = date("Y/m/d");
 
 $myconnection = mysqli_connect('localhost', 'root', '') or die ('Could not connect: ' . mysql_error());
@@ -63,5 +64,17 @@ $_SESSION['Cart_Num'] = $row8["Cart_ID"];
 
 mysqli_close($myconnection);
 
-header("Location: addtocart_guest.php");
+
+$Rtn_Val = $_SESSION['Return_Val'];
+switch($Rtn_Val) 
+{
+	case 1: //1 = Add to cart page
+		header("Location: addtocart_guest.php");
+		break;
+	case 2: //2 = Shopping Cart page
+		header("Location: shopping_cart_guest.php");
+		break;
+	default:
+		header("Location: guest.html");
+}
 ?>

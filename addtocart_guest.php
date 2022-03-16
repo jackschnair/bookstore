@@ -17,6 +17,7 @@ if($_POST['ISBN'] != NULL && $_POST['Book_Cond'] != NULL)
 
 if($user_cart == NULL) //we need some user info, if the guest has not entered that then they must do so now
 {
+	$_SESSION['Return_Val'] = 1; //Holds a code to det which page to return to, this page is 1
 	header("Location: guest_info.html");
 }
 

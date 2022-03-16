@@ -29,6 +29,12 @@ $myconnection = mysqli_connect('localhost', 'root', '')
 $mydb = mysqli_select_db ($myconnection, 'bookstore') or die ('Could not select database');
 
 //to add -- check if guest has filled out info yet, if not ask for guest info
+if($Cart_Num == NULL)
+{
+	$_SESSION['Return_Val'] = 2; //Holds a code to det which page to return to, shopping cart page is 2
+	header("Location: guest_info.html");
+}
+
 
 $query = "SELECT title, author, genre, b.ISBN as BookNum, b.book_cond as Condit, type, price, quantity, cart_ID FROM book b, in_cart i WHERE 
 	b.ISBN = i.ISBN AND b.book_cond = i.book_cond AND cart_ID = '$Cart_Num'";
@@ -81,7 +87,7 @@ mysqli_close($myconnection);
 ?>
 </table>
 <br />
-<a href = "checkout.html">Proceed to Checkout</a>
+<a href = "checkout_guest.html">Proceed to Checkout</a>
 </body>
 </html>
 
