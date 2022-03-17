@@ -14,10 +14,7 @@
 <td><b><u>Condition</b></u></td>
 <td><b><u>Type</b></u></td>
 <td><b><u>Price</b></u></td>
-<td><b><u>Trade Value</b></u></td>
 <td><b><u>Add to Cart</b></u></td>
-<td><b><u>Add to Wishlist</b></u></td>
-<td><b><u>Trade In</b></u></td>
 </tr>
 <?php
 $info = $_POST['info'];
@@ -56,34 +53,10 @@ while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 	echo "<td>";
 	echo '$' . $row["price"];
 	echo "</td>";
-	echo "<td>";
-	if($row["trade_value"] != NULL)
-	{
-		echo '$' . $row["trade_value"];
-	}
-	else
-	{
-		echo "N/A";
-	}
-	echo "</td>";
-	echo "<td><form action = \"addtocart.php\" method = \"Post\">";
+	echo "<td><form action = \"addtocart_guest.php\" method = \"Post\">";
 	echo "<input type = \"hidden\" name = \"ISBN\" value = \"$ISBN\">";
 	echo "<input type = \"hidden\" name = \"Book_Cond\" value = \"$Book_Cond\">";
 	echo "<input type = \"submit\" value = \"Add to Cart\"></form></td>";
-	echo "<td><form action = \"addtowish.php\" method = \"Post\">";
-	echo "<input type = \"hidden\" name = \"ISBN\" value = \"$ISBN\">";
-	echo "<input type = \"hidden\" name = \"Book_Cond\" value = \"$Book_Cond\">";
-	echo "<input type = \"submit\" value = \"Add to Wishlist\"></form></td>";
-	if($row["trade_value"] != NULL)
-	{
-		echo "<td><form action = \"trade.php\" method = \"Post\">";
-		echo "<input type = \"hidden\" name = \"ISBN\" value = \"$ISBN\">";
-		echo "<input type = \"submit\" value = \"Trade\"></form></td>";
-	}
-	else
-	{
-		echo "<td>N/A</td>";
-	}
 	echo "</tr>";
 }
 
@@ -118,34 +91,10 @@ while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 	echo "<td>";
 	echo '$' . $row["price"];
 	echo "</td>";
-	echo "<td>";
-	if($row["trade_value"] != NULL)
-	{
-		echo '$' . $row["trade_value"];
-	}
-	else
-	{
-		echo "N/A";
-	}
-	echo "</td>";
-	echo "<td><form action = \"addtocart.php\" method = \"Post\">";
+	echo "<td><form action = \"addtocart_guest.php\" method = \"Post\">";
 	echo "<input type = \"hidden\" name = \"ISBN\" value = \"$ISBN\">";
 	echo "<input type = \"hidden\" name = \"Book_Cond\" value = \"$Book_Cond\">";
 	echo "<input type = \"submit\" value = \"Add to Cart\"></form></td>";
-	echo "<td><form action = \"addtowish.php\" method = \"Post\">";
-	echo "<input type = \"hidden\" name = \"ISBN\" value = \"$ISBN\">";
-	echo "<input type = \"hidden\" name = \"Book_Cond\" value = \"$Book_Cond\">";
-	echo "<input type = \"submit\" value = \"Add to Wishlist\"></form></td>";
-	if($row["trade_value"] != NULL)
-	{
-		echo "<td><form action = \"trade.php\" method = \"Post\">";
-		echo "<input type = \"hidden\" name = \"ISBN\" value = \"$ISBN\">";
-		echo "<input type = \"submit\" value = \"Trade\"></form></td>";
-	}
-	else
-	{
-		echo "<td>N/A</td>";
-	}
 	echo "</tr>";
 }
 
@@ -180,34 +129,10 @@ while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 	echo "<td>";
 	echo '$' . $row["price"];
 	echo "</td>";
-	echo "<td>";
-	if($row["trade_value"] != NULL)
-	{
-		echo '$' . $row["trade_value"];
-	}
-	else
-	{
-		echo "N/A";
-	}
-	echo "</td>";
-	echo "<td><form action = \"addtocart.php\" method = \"Post\">";
+	echo "<td><form action = \"addtocart_guest.php.php\" method = \"Post\">";
 	echo "<input type = \"hidden\" name = \"ISBN\" value = \"$ISBN\">";
 	echo "<input type = \"hidden\" name = \"Book_Cond\" value = \"$Book_Cond\">";
 	echo "<input type = \"submit\" value = \"Add to Cart\"></form></td>";
-	echo "<td><form action = \"addtowish.php\" method = \"Post\">";
-	echo "<input type = \"hidden\" name = \"ISBN\" value = \"$ISBN\">";
-	echo "<input type = \"hidden\" name = \"Book_Cond\" value = \"$Book_Cond\">";
-	echo "<input type = \"submit\" value = \"Add to Wishlist\"></form></td>";
-	if($row["trade_value"] != NULL)
-	{
-		echo "<td><form action = \"trade.php\" method = \"Post\">";
-		echo "<input type = \"hidden\" name = \"ISBN\" value = \"$ISBN\">";
-		echo "<input type = \"submit\" value = \"Trade\"></form></td>";
-	}
-	else
-	{
-		echo "<td>N/A</td>";
-	}
 	echo "</tr>";
 }
 
@@ -242,34 +167,10 @@ while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 	echo "<td>";
 	echo '$' . $row["price"];
 	echo "</td>";
-	echo "<td>";
-	if($row["trade_value"] != NULL)
-	{
-		echo '$' . $row["trade_value"];
-	}
-	else
-	{
-		echo "N/A";
-	}
-	echo "</td>";
-	echo "<td><form action = \"addtocart.php\" method = \"Post\">";
+	echo "<td><form action = \"addtocart_guest.php\" method = \"Post\">";
 	echo "<input type = \"hidden\" name = \"ISBN\" value = \"$ISBN\">";
 	echo "<input type = \"hidden\" name = \"Book_Cond\" value = \"$Book_Cond\">";
 	echo "<input type = \"submit\" value = \"Add to Cart\"></form></td>";
-	echo "<td><form action = \"addtowish.php\" method = \"Post\">";
-	echo "<input type = \"hidden\" name = \"ISBN\" value = \"$ISBN\">";
-	echo "<input type = \"hidden\" name = \"Book_Cond\" value = \"$Book_Cond\">";
-	echo "<input type = \"submit\" value = \"Add to Wishlist\"></form></td>";
-	if($row["trade_value"] != NULL)
-	{
-		echo "<td><form action = \"trade.php\" method = \"Post\">";
-		echo "<input type = \"hidden\" name = \"ISBN\" value = \"$ISBN\">";
-		echo "<input type = \"submit\" value = \"Trade\"></form></td>";
-	}
-	else
-	{
-		echo "<td>N/A</td>";
-	}
 	echo "</tr>";
 }
 

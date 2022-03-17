@@ -18,7 +18,7 @@ if($row != NULL && $row["special_password"] == $Password) {
 	$_SESSION['Email'] = $Email;
 	mysqli_free_result($result);
 	mysqli_close($myconnection);
-	header("Location: query2.html");
+	header("Location: publisher.html");
 	exit();
 }
 
