@@ -31,11 +31,11 @@ if (is_null($Year) || $Year == "") { // user didn't enter year
 	mysqli_free_result($result);
 }
 else { // searches for most ordered of that year
-    $query = "SELECT DISTINCT Title FROM Book, (SELECT ISBN FROM 
-		(SELECT ISBN, MAX(sold) FROM 
+    $query = "SELECT DISTINCT Title FROM Book, (SELECT t3.ISBN FROM 
+		(SELECT ISBN, MAX(t2.sold) FROM 
 			(SELECT in_order.ISBN, SUM(Quantity) as sold FROM in_order, orders 
 				WHERE in_order.order_num = orders.order_num 
-					AND orders.order_date LIKE '%$Year%' GROUP BY ISBN) GROUP BY ISBN)) t1
+					AND orders.order_date LIKE '%$Year%' GROUP BY ISBN) t2 GROUP BY ISBN) t3) t1
 		WHERE Book.ISBN = t1.ISBN";
 
     $result = mysqli_query($myconnection, $query) or die ('Query failed: ' . mysql_error());
