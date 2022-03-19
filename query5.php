@@ -35,7 +35,7 @@ else { // searches for most ordered of that year
 		(SELECT ISBN, MAX(t2.sold) FROM 
 			(SELECT in_order.ISBN, SUM(Quantity) as sold FROM in_order, orders 
 				WHERE in_order.order_num = orders.order_num 
-					AND orders.order_date LIKE '%$Year%' GROUP BY ISBN) t2 GROUP BY ISBN) t3) t1
+					AND orders.order_date LIKE '%$Year%' GROUP BY ISBN) t2) t3) t1
 		WHERE Book.ISBN = t1.ISBN";
 
     $result = mysqli_query($myconnection, $query) or die ('Query failed: ' . mysql_error());
