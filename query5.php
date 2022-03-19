@@ -30,7 +30,7 @@ if (is_null($Year) || $Year == "") { // user didn't enter year
 	mysqli_free_result($result);
 }
 else { // searches for best selling books of that year
-    $query = "SELECT Title 
+    /*$query = "SELECT Title 
 	      FROM (SELECT ISBN, sum(quantity) as Sold 
 		    FROM in_order 
 		    WHERE ISBN = (SELECT ISBN 
@@ -44,7 +44,13 @@ else { // searches for best selling books of that year
 					            FROM Book 
 						   WHERE Date_Published LIKE '%$Year%') 
 				      GROUP BY ISBN) t1)
-				AND Book.ISBN = t2.ISBN"; 
+				AND Book.ISBN = t2.ISBN"; */
+	$query = "SELECT DISTINCT Title FROM Book, (SELECT t3.ISBN FROM 
+				(SELECT ISBN, MAX(t2.sold) FROM 
+					(SELECT in_order.ISBN, SUM(Quantity) as sold FROM in_order, orders 
+						WHERE in_order.order_num = orders.order_num 
+						AND orders.order_date LIKE '%$Year%' GROUP BY ISBN) t2) t3) t1
+				WHERE Book.ISBN = t1.ISBN";
     $result = mysqli_query($myconnection, $query) or die ('Query failed: ' . mysql_error());
 	if (mysqli_num_rows($result) > 0) {
 		while ($row = mysqli_fetch_array ($result, MYSQLI_ASSOC)) {
