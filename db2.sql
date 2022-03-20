@@ -15,6 +15,7 @@ DROP TABLE IF EXISTS Has_Pay_Info;
 DROP TABLE IF EXISTS Payment_Info;
 DROP TABLE IF EXISTS Customer;
 DROP TABLE IF EXISTS User;
+DROP TABLE IF EXISTS Author;
 
 CREATE TABLE User(
 	Email VARCHAR(40) PRIMARY KEY,
@@ -39,22 +40,35 @@ INSERT INTO User VALUES('McGraw@gmail.com', 'Simon Allen', '1238914914');
 INSERT INTO User VALUES('hcollins@gmail.com', 'Brian Murray', '18002427737');
 INSERT INTO User VALUES('hachette@gmail.com', 'Arnaud Nourry', '6785857658');
 
+CREATE TABLE Author(
+	Name VARCHAR(30) PRIMARY KEY,
+	Birthday DATE
+);
+
+INSERT INTO Author VALUES('Herman Melville', '1819-08-01');
+INSERT INTO Author VALUES('F Scott Fitzgerald', '1896-09-26');
+INSERT INTO Author VALUES('Larry David', '1947-07-02');
+INSERT INTO Author VALUES('Antoine de Saint Exupery', '1900-07-29');
+INSERT INTO Author VALUES('OJ Simpson', '1947-07-09');
+INSERT INTO Author VALUES('Edmond Rostand', '1868-04-01');
+
 CREATE TABLE Customer (
 	Email VARCHAR(40),
 	Username VARCHAR(20) NOT NULL,
 	Password VARCHAR(20) NOT NULL,
 	Membership BOOLEAN,
 	Store_Credit REAL,
-	FOREIGN KEY (Email) REFERENCES User(Email) ON DELETE CASCADE
-	ON UPDATE CASCADE
+	Is_Author VARCHAR(30),
+	FOREIGN KEY (Email) REFERENCES User(Email) ON DELETE CASCADE ON UPDATE CASCADE,
+	FOREIGN KEY (Is_Author) REFERENCES Author(Name) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
-INSERT INTO Customer VALUES('SPECIAL', 'na', 'securepassword', True, 0);
-INSERT INTO Customer VALUES('elmo@gmail.com', 'elmo', 'password', False, 10.50);
-INSERT INTO Customer VALUES('larry_david@gmail.com', 'LDMaster', 'curb',True, 3.50);
-INSERT INTO Customer VALUES('jerry@gmail.com', 'jerry', 'seinfeld',True, 0);
-INSERT INTO Customer VALUES('barney@gmail.com', 'dinosaur', 'taildrugs', False, 0);
-INSERT INTO Customer VALUES('spongebob@gmail.com', 'bob12', 'squarepants', False, 5.00);
+INSERT INTO Customer VALUES('SPECIAL', 'na', 'securepassword', True, 0, NULL);
+INSERT INTO Customer VALUES('elmo@gmail.com', 'elmo', 'password', False, 10.50, NULL);
+INSERT INTO Customer VALUES('larry_david@gmail.com', 'LDMaster', 'curb',True, 3.50, 'Larry David');
+INSERT INTO Customer VALUES('jerry@gmail.com', 'jerry', 'seinfeld',True, 0, NULL);
+INSERT INTO Customer VALUES('barney@gmail.com', 'dinosaur', 'taildrugs', False, 0, NULL);
+INSERT INTO Customer VALUES('spongebob@gmail.com', 'bob12', 'squarepants', False, 5.00, NULL);
 
 CREATE TABLE Guest(
 	Email VARCHAR(40),
@@ -67,7 +81,6 @@ INSERT INTO Guest VALUES('ojsimp@hotmail.com');
 INSERT INTO Guest VALUES('bobsbugsbegone@gmail.com');
 INSERT INTO Guest VALUES('imricherthanyou@rcn.com');
 INSERT INTO Guest VALUES('tesla@gmail.com');
-
 
 CREATE TABLE Publisher(
 	Email VARCHAR(40),
@@ -101,6 +114,8 @@ CREATE TABLE Book(
 	Def_Shipping_Cost Real,
 	PRIMARY KEY(ISBN, Book_Cond),
 	FOREIGN KEY (Publisher_Name) REFERENCES Publisher(Publisher_Name) ON 
+DELETE CASCADE ON UPDATE CASCADE,
+	FOREIGN KEY (Author) REFERENCES Author(Name) ON 
 DELETE CASCADE ON UPDATE CASCADE
 );
 
