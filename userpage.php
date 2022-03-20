@@ -30,6 +30,7 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
 echo "<p>You have $" . $row["store_credit"] . " in store credit</p>";
 
+mysqli_close($myconnection);
 ?>
 
 <hr />
@@ -54,6 +55,22 @@ if($Email == "SPECIAL") { //user is a publisher
 	echo "<a href = \"query3.html\">Update Shipping Cost of Book</a><br />";
 }
 
+
+$myconnection = mysqli_connect('localhost', 'root', '') 
+    or die ('Could not connect: ' . mysql_error());
+
+$mydb = mysqli_select_db ($myconnection, 'bookstore') or die ('Could not select database');
+
+$query = "SELECT is_author FROM customer WHERE email = '$Email'";
+$result = mysqli_query($myconnection, $query) or die ('Query failed: ' . mysql_error());
+$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+
+if($row["is_author"] != NULL)
+{
+	echo "<a href = \"book_list_author.php\">Your Books</a><br />";
+}
+
+mysqli_close($myconnection);
 ?>
 </body>
 </html>
