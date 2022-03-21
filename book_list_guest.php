@@ -22,7 +22,7 @@ $myconnection = mysqli_connect('localhost', 'root', '')
 
 $mydb = mysqli_select_db ($myconnection, 'bookstore') or die ('Could not select database');
 
-$query = 'SELECT title, author, genre, ISBN, Book_Cond, type, price, trade_value FROM book';
+$query = 'SELECT title, author, genre, ISBN, Book_Cond, type, price, trade_value, stock FROM book';
 $result = mysqli_query($myconnection, $query) or die ('Query failed: ' . mysql_error());
 
 while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
@@ -50,10 +50,15 @@ while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 	echo "<td>";
 	echo '$' . $row["price"];
 	echo "</td>";
-	echo "<td><form action = \"addtocart_guest.php\" method = \"Post\">";
-	echo "<input type = \"hidden\" name = \"ISBN\" value = \"$ISBN\">";
-	echo "<input type = \"hidden\" name = \"Book_Cond\" value = \"$Book_Cond\">";
-	echo "<input type = \"submit\" value = \"Add to Cart\"></form></td>";
+	if($row["stock"] > 0) {
+		echo "<td><form action = \"addtocart_guest.php\" method = \"Post\">";
+		echo "<input type = \"hidden\" name = \"ISBN\" value = \"$ISBN\">";
+		echo "<input type = \"hidden\" name = \"Book_Cond\" value = \"$Book_Cond\">";
+		echo "<input type = \"submit\" value = \"Add to Cart\"></form></td>";
+	}
+	else {
+		echo "<td>Out of Stock</td>";
+	}
 	echo "</tr>";
 }
 

@@ -186,15 +186,16 @@ CREATE TABLE Trade (
 	Email VARCHAR(26),
 	ISBN VARCHAR(13),
 	Book_Cond VARCHAR(10),
+	Verified BOOL,
 	FOREIGN KEY (Email) REFERENCES Customer(Email) ON DELETE CASCADE ON UPDATE CASCADE,
 FOREIGN KEY (ISBN, Book_Cond) REFERENCES Book(ISBN, Book_Cond) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
-INSERT INTO Trade VALUES('jerry@gmail.com', '1234455677', 'used');
-INSERT INTO Trade VALUES('barney@gmail.com', '3288324823', 'used');
-INSERT INTO Trade VALUES('spongebob@gmail.com', '3288324823', 'used');
-INSERT INTO Trade VALUES('barney@gmail.com', '1234455677', 'used');
-INSERT INTO Trade VALUES('barney@gmail.com', '8437548384', 'used');
+INSERT INTO Trade VALUES('jerry@gmail.com', '1234455677', 'used', true);
+INSERT INTO Trade VALUES('barney@gmail.com', '3288324823', 'used', true);
+INSERT INTO Trade VALUES('spongebob@gmail.com', '3288324823', 'used', false);
+INSERT INTO Trade VALUES('barney@gmail.com', '1234455677', 'used', false);
+INSERT INTO Trade VALUES('barney@gmail.com', '8437548384', 'used', true);
 
 
 CREATE TABLE On_Wishlist (

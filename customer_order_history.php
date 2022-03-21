@@ -46,10 +46,15 @@ while ($row = mysqli_fetch_array ($result, MYSQLI_ASSOC)) {
 	echo "<td>" . $row['Price_Bought'] . "</td>";
 	echo "<td>" . $row['Shipping_Method'] . "</td>";
 	echo "<td>" . $row['Shipping_Addr'] . "</td>";
-	echo "<td><form action = \"addtocart.php\" method = \"Post\">";
-	echo "<input type = \"hidden\" name = \"ISBN\" value = \"$ISBN\">";
-	echo "<input type = \"hidden\" name = \"Book_Cond\" value = \"$Book_Cond\">";
-	echo "<input type = \"submit\" value = \"Add to Cart\"></form></td>";
+	if($row['Stock'] > 0) {
+		echo "<td><form action = \"addtocart.php\" method = \"Post\">";
+		echo "<input type = \"hidden\" name = \"ISBN\" value = \"$ISBN\">";
+		echo "<input type = \"hidden\" name = \"Book_Cond\" value = \"$Book_Cond\">";
+		echo "<input type = \"submit\" value = \"Add to Cart\"></form></td>";
+	}
+	else {
+		echo "<td>Out of Stock</td>";
+	}
  	echo "</tr>"; 
 }
 
