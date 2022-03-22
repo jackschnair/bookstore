@@ -97,6 +97,7 @@ INSERT INTO Publisher VALUES('Boombastic@yahoo.com', '77 Barnyard Road Boston MA
 INSERT INTO Publisher VALUES('McGraw@gmail.com', '2 Penn Plaza New York NY', 'McGraw Hill', 'scam_artists');
 INSERT INTO Publisher VALUES('hcollins@gmail.com', '195 Broadway New York NY', 'Harper Collins', 'we_exist');
 INSERT INTO Publisher VALUES('hachette@gmail.com', '1290 Avenue of the Americas Paris France', 'Hachette Livre', 'dude_trust_me');
+INSERT INTO Publisher VALUES('Allenunwin@gmail.com', '23 Something Pitsburg PA', 'Allen and Unwin', 'lotr');
 
 CREATE TABLE Book(
 	ISBN VARCHAR(13),
@@ -132,7 +133,9 @@ INSERT INTO Book VALUES('8932578825', 'used', 'Cyrano De Bergerac', 'Edmond Rost
 INSERT INTO Book VALUES('3288324823', 'new', 'The Seinfeld Scripts', 'Larry David',9, 'Non Fiction', '1998-01-01', 'PaperBack', 15.99, 'McGraw Hill', 60, NULL, 3.99);
 INSERT INTO Book VALUES('8437548384', 'new', 'If I Did It', 'OJ Simpson', 1, 'Fiction', '2007-09-07', 'Hard Cover', 15.99, 'McGraw Hill', 7, NULL, 3.99);
 INSERT INTO Book VALUES('574954985945', 'new', 'Le Petit Prince', 'Antoine de Saint Exupery', 7, 'Fiction', '1943-04-06', 'PaperBack', 25.99, 'McGraw Hill', 0, NULL, 3.99);
-
+INSERT INTO BOOK VALUES('2274569001', 'new', 'The Fellowship of the Ring', 'J.R.R. Tolkien', 6, 'Fiction', '1954-07-29','PaperBack', 17.99, 'Allen and Unwin', 1, 10.00, 2.99);
+INSERT INTO BOOK VALUES('2274569002', 'new', 'The Two Towers', 'J.R.R. Tolkien', 6, 'Fiction', '1954-11-11','PaperBack', 15.99, 'Allen and Unwin', 3, 10.00, 2.99);
+INSERT INTO BOOK VALUES('2274569003', 'new', 'The Return of the King', 'J.R.R. Tolkien', 6, 'Fiction', '1955-10-20','PaperBack', 19.99, 'Allen and Unwin', 2, 10.00, 2.99);
 
 
 CREATE TABLE Payment_info(
