@@ -51,6 +51,13 @@ while ($row = mysqli_fetch_array ($result, MYSQLI_ASSOC)) {
 		echo "<input type = \"hidden\" name = \"ISBN\" value = \"$ISBN\">";
 		echo "<input type = \"hidden\" name = \"Book_Cond\" value = \"$Book_Cond\">";
 		echo "<input type = \"submit\" value = \"Add to Cart\"></form></td>";
+		
+		echo "<td><form action = \"query8a.php\" method = \"Post\">";
+		echo "<input type = \"hidden\" name = \"Email\" value = \"$Email\">";
+		echo "<input type = \"hidden\" name = \"ISBN\" value = \"$ISBN\">";
+		echo "<input type = \"hidden\" name = \"Book_Cond\" value = \"$Book_Cond\">";
+		echo "<input type = \"submit\" value = \"leave a rating\"></form></td>";
+ 		echo "</tr>";
 	}
 	else {
 		echo "<td>Out of Stock</td>";
