@@ -11,7 +11,7 @@ $myconnection = mysqli_connect('localhost', 'root', '')
 $mydb = mysqli_select_db ($myconnection, 'bookstore') or die ('Could not select database');
 
 if (is_null($Year) || $Year == "") { // user didn't enter year
-    $query = "SELECT Title 
+    $query = "SELECT DISTINCT Title 
 	FROM (SELECT ISBN, sum(quantity) as Sold FROM in_order 
 		WHERE ISBN in 
 			(SELECT ISBN FROM Book) GROUP BY ISBN) t2, Book	WHERE t2.Sold in 

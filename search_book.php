@@ -28,7 +28,7 @@ $myconnection = mysqli_connect('localhost', 'root', '')
 $mydb = mysqli_select_db ($myconnection, 'bookstore') or die ('Could not select database');
 
 //search by title
-$query = "SELECT title, author, genre, ISBN, Book_Cond, type, price, trade_value, stock FROM book WHERE title = '$info'";
+$query = "SELECT title, author, genre, ISBN, Book_Cond, type, price, trade_value, stock FROM book WHERE title LIKE '%$info%'";
 $result = mysqli_query($myconnection, $query) or die ('Query failed: ' . mysql_error());
 
 while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
