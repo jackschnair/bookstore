@@ -9,11 +9,12 @@ session_start();
 $user_cart = $_SESSION['Cart_Num'];
 
 //add the book isbn and cond to session vars for redirect
-if($_POST['ISBN'] != NULL && $_POST['Book_Cond'] != NULL)
+if($_POST != NULL)
 {
 	$_SESSION['ISBN'] = $_POST['ISBN'];
 	$_SESSION['Book_Cond'] = $_POST['Book_Cond'];
 }
+
 
 if($user_cart == NULL) //we need some user info ie: a shopping cart, if the guest has not entered that then they must do so now
 {

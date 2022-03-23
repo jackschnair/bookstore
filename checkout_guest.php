@@ -2,6 +2,7 @@
 
 session_start();
 $Email = $_SESSION['Email'];
+
 $Card_num = $_POST['Card_num'];
 $Name_on_card = $_POST['Name_on_card'];
 $Expr_Date = $_POST['Expr_Date'];
@@ -13,6 +14,44 @@ $myconnection = mysqli_connect('localhost', 'root', '')
     or die ('Could not connect: ' . mysql_error());
 
 $mydb = mysqli_select_db ($myconnection, 'bookstore') or die ('Could not select database');
+
+//First check that there is enough stock
+
+$check_stock = "SELECT i.ISBN, i.book_cond, quantity FROM book b, in_cart i WHERE i.ISBN = b.ISBN AND i.book_cond = b.book_cond 
+AND cart_ID = (SELECT cart_ID from has_cart WHERE email = '$Email')";
+$result_check_stock = mysqli_query($myconnection, $check_stock) or die ('Query failed: ' . mysql_error());
+
+//variables to keep track if the order will fail or not due to a lack of stock
+
+$order_failed = False;
+$reason_for_failure = "";
+
+while($row_check_stock = mysqli_fetch_array($result_check_stock, MYSQLI_ASSOC)) { //for each book in cart check that there is enough stock
+	$ISBN_to_check = $row_check_stock["ISBN"];
+	$Cond_to_check = $row_check_stock["book_cond"];
+	$Quantity_ordered = $row_check_stock["quantity"];
+
+	$get_stock = "SELECT stock FROM book WHERE ISBN = '$ISBN_to_check' AND book_cond = '$Cond_to_check'";
+	$result_get_stock = mysqli_query($myconnection, $get_stock) or die ('Query failed: ' . mysql_error());
+	$row_get_stock = mysqli_fetch_array($result_get_stock, MYSQLI_ASSOC);
+	$Quantity_available = $row_get_stock["stock"];
+		
+	if($Quantity_ordered > $Quantity_available) { //there isn't enought stock of the book
+		$order_failed = True;
+		$reason_for_failure = $reason_for_failure . "Not enough copies of the book with ISBN " . $ISBN_to_check . " in condition " . 
+		$Cond_to_check . " to fufill order.<br />";
+	}
+
+	mysqli_free_result($result_get_stock);
+		
+}
+
+if($order_failed) {
+	echo $reason_for_failure;
+	die();
+}
+
+mysqli_free_result($result_check_stock);
 
 //check if payment info is already recorded if so don't enter it again
 $query = "SELECT * FROM payment_info WHERE card_num = '$Card_num'";
@@ -82,6 +121,10 @@ while($row7 = mysqli_fetch_array($result7, MYSQLI_ASSOC)) {
 
 	}
 
+	//reduce the stock by the number of copies ordered
+	$query_stock_1 = "UPDATE book SET stock = stock - $Quantity_to_add WHERE ISBN = '$ISBN_to_add' AND book_cond = '$Book_cond_to_add'";
+	$result_stock_1 = mysqli_query($myconnection, $query_stock_1) or die ('Query failed: ' . mysql_error());
+
 }
 
 
@@ -90,10 +133,6 @@ mysqli_free_result($result7);
 //remove the old data from the old cart
 $query10 = "DELETE FROM in_cart WHERE Cart_ID = (SELECT Cart_ID FROM has_cart WHERE email = '$Email')";
 $result10 = mysqli_query($myconnection, $query10) or die ('Query failed: ' . mysql_error());
-
-//subtract any price from store credit if necc
-$query11 = "UPDATE customer SET store_credit = store_credit - (SELECT total_price FROM orders WHERE order_num = '$new_order_num') WHERE email = '$Email'";
-$result11 = mysqli_query($myconnection, $query11) or die ('Query failed: ' . mysql_error());
 
 mysqli_free_result($result);
 mysqli_free_result($result2);

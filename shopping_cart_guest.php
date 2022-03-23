@@ -69,12 +69,12 @@ while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 	echo "<td>";
 	echo $row["quantity"];
 	echo "</td>";
-	echo "<td><form action = \"remove_all.php\" method = \"Post\">";
+	echo "<td><form action = \"remove_all_guest.php\" method = \"Post\">";
 	echo "<input type = \"hidden\" name = \"ISBN\" value = \"$ISBN\">";
 	echo "<input type = \"hidden\" name = \"Book_Cond\" value = \"$Book_Cond\">";
 	echo "<input type = \"hidden\" name = \"Cart_ID\" value = \"$Cart_ID\">";
 	echo "<input type = \"submit\" value = \"Remove All\"></form></td>";
-	echo "<td><form action = \"remove_one.php\" method = \"Post\">";
+	echo "<td><form action = \"remove_one_guest.php\" method = \"Post\">";
 	echo "<input type = \"hidden\" name = \"ISBN\" value = \"$ISBN\">";
 	echo "<input type = \"hidden\" name = \"Book_Cond\" value = \"$Book_Cond\">";
 	echo "<input type = \"hidden\" name = \"Cart_ID\" value = \"$Cart_ID\">";

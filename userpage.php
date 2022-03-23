@@ -38,6 +38,8 @@ mysqli_close($myconnection);
 <br />
 <a href = "book_list.php">View Books</a>
 <br />
+<a href = "best_seller.html">Best Sellers</a>
+<br />
 <a href = "shopping_cart.php">Shopping Cart</a>
 <br />
 <a href = "member.php">Membership Settings</a>

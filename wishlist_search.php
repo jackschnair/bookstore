@@ -26,7 +26,6 @@ $myconnection = mysqli_connect('localhost', 'root', '')
 
 $mydb = mysqli_select_db ($myconnection, 'bookstore') or die ('Could not select database');
 
-
 $query = "SELECT title, author, genre, ISBN, Book_Cond, type, price, stock FROM book WHERE (ISBN, Book_Cond) IN 
 (SELECT ISBN, Book_Cond FROM on_wishlist WHERE email = '$Email')";
 $result = mysqli_query($myconnection, $query) or die ('Query failed: ' . mysql_error());
