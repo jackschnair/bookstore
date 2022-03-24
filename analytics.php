@@ -68,7 +68,7 @@ while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 	}
 	echo "</td>";
 
-
+	//find how many units have been sold
 	$query2 = "SELECT sum(quantity) AS sold FROM in_order WHERE ISBN = '$ISBN' AND Book_Cond = '$Book_Cond'";
 	$result2 = mysqli_query($myconnection, $query2) or die ('Query failed: ' . mysql_error());
 
@@ -84,9 +84,11 @@ while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 	echo "</td>";
 	echo "<td>";
 	echo '$';
+	//calculate how much money the book has made
 	echo $row2["sold"] * $row["price"];
 	echo "</td>";
 
+	//find out how many wishlists the book is on
 	$query3 = "SELECT count(*) AS wished_for FROM on_wishlist WHERE ISBN = '$ISBN' AND Book_Cond = '$Book_Cond'";
 	$result3 = mysqli_query($myconnection, $query3) or die ('Query failed: ' . mysql_error());
 
