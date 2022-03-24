@@ -162,7 +162,7 @@ while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 mysqli_free_result($result);
 
 //search by genre
-$query = "SELECT title, author, genre, ISBN, Book_Cond, type, price, trade_value, stock FROM book WHERE genre LIKE '%$info%'";
+$query = "SELECT title, author, genre, ISBN, Book_Cond, type, price, trade_value, stock FROM book WHERE genre = '$info'";
 $result = mysqli_query($myconnection, $query) or die ('Query failed: ' . mysql_error());
 
 while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
@@ -229,7 +229,7 @@ while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 mysqli_free_result($result);
 
 //search by exact isbn
-$query = "SELECT title, author, genre, ISBN, Book_Cond, type, price, trade_value, stock FROM book WHERE ISBN LIKE '%$info%'";
+$query = "SELECT title, author, genre, ISBN, Book_Cond, type, price, trade_value, stock FROM book WHERE ISBN LIKE '$info'";
 $result = mysqli_query($myconnection, $query) or die ('Query failed: ' . mysql_error());
 
 while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
