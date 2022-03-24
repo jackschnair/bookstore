@@ -86,5 +86,10 @@ mysqli_close($myconnection);
 <br />
 <a href = "checkout.html">Proceed to Checkout</a>
 </body>
+<br />
+<br />
+<form>
+  <button formaction="userpage.php">Back</button>
+</form>
 </html>
 
