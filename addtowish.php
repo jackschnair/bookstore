@@ -14,4 +14,6 @@ $query = "INSERT INTO on_wishlist VALUES ('$Email', '$ISBN' , '$Book_Cond')";
 $result = mysqli_query($myconnection, $query) or die ('Query failed: ' . mysql_error());
 
 mysqli_close($myconnection);
+
+header('Location: ' . $_SERVER['HTTP_REFERER']);
 ?>

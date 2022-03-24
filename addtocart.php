@@ -1,3 +1,6 @@
+<!DOCTYPE html>
+<html>
+
 <?php
 
 session_start();
@@ -74,4 +77,6 @@ $result4 = mysqli_query($myconnection, $query4) or die ('Query failed: ' . mysql
 mysqli_free_result($result2);
 
 mysqli_close($myconnection);
+
+header('Location: ' . $_SERVER['HTTP_REFERER']);
 ?>
