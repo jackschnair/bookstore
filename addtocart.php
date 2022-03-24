@@ -80,7 +80,3 @@ mysqli_close($myconnection);
 
 header('Location: ' . $_SERVER['HTTP_REFERER']);
 ?>
-<form>
-  <button formaction="userpage.php">Back</button>
-</form>
-</html>
