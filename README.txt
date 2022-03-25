@@ -33,6 +33,21 @@ other users receive standard shipping and a fee for doing so.  The exception is 
 books store credit will be deducted and used towards payments if the user has any.  Behind the scenes the payment information is recorded in the database, 
 an order is created, and the books ordered a recorded as being a part of the order.  The shopping cart is also emptied.
 
+Query 5
+-Please add this
+
+Query 6
+-Customers can view their order history by viewing the order history page.  Guests must enter their order number (given to them
+at checkout) to see the list of books in that order while registered customers can see all of their orders automatically.  Both have the option to 
+add the book to their cart again.  Guests may not leave a rating but registered users can click the leave a rating button on this page to do so. 
+
+Query 7
+-By logging in as an author, you will have access to a special page that lists all the books that author has written called "Your Books".  It
+functions in a similar way to the search book page in that you have options to add the book to cart, add to wishlist or trade a copy in.
+
+Query 8
+-Please add this
+
 Extra Features
 
 -By logging in as a publisher you can select go to an analytics page.  This page will give you information about how well your books have sold 

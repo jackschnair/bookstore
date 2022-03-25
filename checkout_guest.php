@@ -134,6 +134,8 @@ mysqli_free_result($result7);
 $query10 = "DELETE FROM in_cart WHERE Cart_ID = (SELECT Cart_ID FROM has_cart WHERE email = '$Email')";
 $result10 = mysqli_query($myconnection, $query10) or die ('Query failed: ' . mysql_error());
 
+echo "Placed order number " . $new_order_num . ".<br />";
+
 mysqli_free_result($result);
 mysqli_free_result($result2);
 mysqli_free_result($result4);

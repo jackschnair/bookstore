@@ -226,7 +226,8 @@ if($row12["store_credit"] < 0)  //calculates amount owed by card if store credit
 	$result13 = mysqli_query($myconnection, $query13) or die ('Query failed: ' . mysql_error());
 }
 
-echo "You will pay $" . $amountOwed . " by Card and the rest has been taken from your store credit balance.\n";
+echo "You will pay $" . $amountOwed . " by Card and the rest has been taken from your store credit balance. <br />";
+echo "Placed order number " . $new_order_num . ".<br />";
 
 mysqli_free_result($result); //some results still need to be freed, do it here
 mysqli_free_result($result2);
