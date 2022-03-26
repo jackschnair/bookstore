@@ -20,7 +20,17 @@
 <td><b><u>Trade In</b></u></td>
 </tr>
 <?php
+
 $info = $_POST['info'];
+
+if ($info == NULL) {
+	session_start();
+	$info = $_SESSION['info'];
+}
+else {
+	session_start();
+	$_SESSION['info'] = $info;
+}
 
 $myconnection = mysqli_connect('localhost', 'root', '') 
     or die ('Could not connect: ' . mysql_error());
@@ -298,5 +308,9 @@ mysqli_close($myconnection);
 ?>
 </table>
 </body>
+<br/>
+<form>
+  <button formaction="userpage.php">Back</button>
+</form>
 </html>
 
