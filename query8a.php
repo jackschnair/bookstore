@@ -33,6 +33,7 @@
 </textarea>
 <br><br>
 <input type="submit"> 
+<button formaction="customer_order_history.php">Back</button>
 </form>
 </body>
 </html>
