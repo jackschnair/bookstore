@@ -39,6 +39,7 @@ INSERT INTO User VALUES('Boombastic@yahoo.com', 'Biggie Cheese', '489328747');
 INSERT INTO User VALUES('McGraw@gmail.com', 'Simon Allen', '1238914914');
 INSERT INTO User VALUES('hcollins@gmail.com', 'Brian Murray', '18002427737');
 INSERT INTO User VALUES('hachette@gmail.com', 'Arnaud Nourry', '6785857658');
+INSERT INTO User VALUES('Allenunwin@gmail.com', 'Allen Unwin', '5643634634');
 
 CREATE TABLE Author(
 	Name VARCHAR(30) PRIMARY KEY,
@@ -51,6 +52,7 @@ INSERT INTO Author VALUES('Larry David', '1947-07-02');
 INSERT INTO Author VALUES('Antoine de Saint Exupery', '1900-07-29');
 INSERT INTO Author VALUES('OJ Simpson', '1947-07-09');
 INSERT INTO Author VALUES('Edmond Rostand', '1868-04-01');
+INSERT INTO Author VALUES('J.R.R. Tolkien', '1891-01-03');
 
 CREATE TABLE Customer (
 	Email VARCHAR(40),
@@ -102,7 +104,7 @@ INSERT INTO Publisher VALUES('Allenunwin@gmail.com', '23 Something Pitsburg PA',
 CREATE TABLE Book(
 	ISBN VARCHAR(13),
 	Book_Cond VARCHAR(10),
-	Title VARCHAR(20) NOT NULL,
+	Title VARCHAR(40) NOT NULL,
 	Author VARCHAR(30) NOT NULL,
 	Edition INT,
 	Genre VARCHAR(20),
@@ -133,10 +135,9 @@ INSERT INTO Book VALUES('8932578825', 'used', 'Cyrano De Bergerac', 'Edmond Rost
 INSERT INTO Book VALUES('3288324823', 'new', 'The Seinfeld Scripts', 'Larry David',9, 'Non Fiction', '1998-01-01', 'PaperBack', 15.99, 'McGraw Hill', 60, NULL, 3.99);
 INSERT INTO Book VALUES('8437548384', 'new', 'If I Did It', 'OJ Simpson', 1, 'Fiction', '2007-09-07', 'Hard Cover', 15.99, 'McGraw Hill', 7, NULL, 3.99);
 INSERT INTO Book VALUES('574954985945', 'new', 'Le Petit Prince', 'Antoine de Saint Exupery', 7, 'Fiction', '1943-04-06', 'PaperBack', 25.99, 'McGraw Hill', 0, NULL, 3.99);
-INSERT INTO BOOK VALUES('2274569001', 'new', 'The Fellowship of the Ring', 'J.R.R. Tolkien', 6, 'Fiction', '1954-07-29','PaperBack', 17.99, 'Allen and Unwin', 1, 10.00, 2.99);
-INSERT INTO BOOK VALUES('2274569002', 'new', 'The Two Towers', 'J.R.R. Tolkien', 6, 'Fiction', '1954-11-11','PaperBack', 15.99, 'Allen and Unwin', 3, 10.00, 2.99);
-INSERT INTO BOOK VALUES('2274569003', 'new', 'The Return of the King', 'J.R.R. Tolkien', 6, 'Fiction', '1955-10-20','PaperBack', 19.99, 'Allen and Unwin', 2, 10.00, 2.99);
-
+INSERT INTO BOOK VALUES('2274569001', 'new', 'The Fellowship of the Ring', 'J.R.R. Tolkien', 6, 'Fiction', '1954-07-29','Digital', 17.99, 'Allen and Unwin', 1, NULL, 0);
+INSERT INTO BOOK VALUES('2274569002', 'new', 'The Two Towers', 'J.R.R. Tolkien', 6, 'Fiction', '1954-11-11','Digital', 15.99, 'Allen and Unwin', 3, NULL, 0);
+INSERT INTO BOOK VALUES('2274569003', 'new', 'The Return of the King', 'J.R.R. Tolkien', 6, 'Fiction', '1955-10-20','Digital', 19.99, 'Allen and Unwin', 2, NULL, 0);
 
 CREATE TABLE Payment_info(
 	Card_num VARCHAR(25) PRIMARY KEY,

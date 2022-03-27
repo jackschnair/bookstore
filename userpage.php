@@ -56,6 +56,7 @@ $Email = $_SESSION['Email'];
 if($Email == "SPECIAL") { //user is a special user
 	echo "<a href = \"query3.html\">Update Shipping Cost of Book</a><br />";
 	echo "<a href = \"trade-update.html\">Update Trade</a><br />";
+	echo "<a href = \"add_author.html\">Add Author</a><br />";
 }
 
 

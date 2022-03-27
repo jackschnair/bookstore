@@ -21,16 +21,9 @@
 </tr>
 <?php
 
-$info = $_POST['info'];
+session_start();
 
-if ($info == NULL) {
-	session_start();
-	$info = $_SESSION['info'];
-}
-else {
-	session_start();
-	$_SESSION['info'] = $info;
-}
+$info = $_SESSION['info'];
 
 $myconnection = mysqli_connect('localhost', 'root', '') 
     or die ('Could not connect: ' . mysql_error());

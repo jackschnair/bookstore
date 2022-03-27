@@ -11,7 +11,8 @@ add a new book to the bookstore or change the price of an existing book that the
 automatically added to the bookstore at a discounted price, and a trade value is generated for that book which
 is a fraction of the price (unless the book is digital in which case there is no trade value or used variant).  By updating the price, 
 the system will also update the price of the used copy and the trade value of the book. The publisher may not control the price of the used book
-or the trade value.
+or the trade value.  The publisher also has no control over shipping cost which is by default 3.99.  Another important note is that the author must
+be in our database system.  Publishers and the super user can add authors on the "Add Author" page.
 
 Query 3
 -The super user can log in on the user login page by entering in "SPECIAL" for an email and "securepassword" as the password.  They can see most of
@@ -48,7 +49,8 @@ add previously purchased books to their cart again.  Guests may not leave a rati
 
 Query 7
 -By logging in as an author, you will have access to a special page that lists all the books that author has written called "Your Books".  It
-functions in a similar way to the search book page in that you have option to add books to cart.
+functions in a similar way to the search book page in that you have option to add books to cart.  A registered user can become an author when some publisher
+or the super user creates an author with their email on the "Add Author" page.
 
 Query 8
 -Please add this

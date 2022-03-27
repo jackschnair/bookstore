@@ -17,7 +17,9 @@
 <td><b><u>Add to Cart</b></u></td>
 </tr>
 <?php
-$info = $_POST['info'];
+session_start();
+
+$info = $_SESSION['info'];
 
 $myconnection = mysqli_connect('localhost', 'root', '') 
     or die ('Could not connect: ' . mysql_error());
