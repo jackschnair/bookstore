@@ -17,6 +17,7 @@
 <td>Shipping Method</td>
 <td>Shipping Address</td>
 <td>Add to Cart</td>
+<td>Leave a rating</td>
 </tr>
 
 <?php 
@@ -62,7 +63,7 @@ while ($row = mysqli_fetch_array ($result, MYSQLI_ASSOC)) {
 	echo "<input type = \"hidden\" name = \"Email\" value = \"$Email\">";
 	echo "<input type = \"hidden\" name = \"ISBN\" value = \"$ISBN\">";
 	echo "<input type = \"hidden\" name = \"Book_Cond\" value = \"$Book_Cond\">";
-	echo "<input type = \"submit\" value = \"leave a rating\"></form></td>";
+	echo "<input type = \"submit\" value = \"Leave a Rating\"></form></td>";
  	echo "</tr>"; 
 }
 

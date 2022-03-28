@@ -18,6 +18,7 @@
 <td><b><u>Add to Cart</b></u></td>
 <td><b><u>Add to Wishlist</b></u></td>
 <td><b><u>Trade In</b></u></td>
+<td><b><u>Ratings</b></u></td>
 </tr>
 <?php
 $myconnection = mysqli_connect('localhost', 'root', '') 
@@ -91,7 +92,7 @@ while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 	echo "<td><form action = \"view_ratings_and_comments.php\" method = \"Post\">";
 	echo "<input type = \"hidden\" name = \"ISBN\" value = \"$ISBN\">";
 	echo "<input type = \"hidden\" name = \"Book_Cond\" value = \"$Book_Cond\">";
-	echo "<input type = \"submit\" value = \"view ratings and comments\"></form></td>";
+	echo "<input type = \"submit\" value = \"View Ratings and Comments\"></form></td>";
 	echo "</tr>";
 }
 

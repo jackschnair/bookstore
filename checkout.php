@@ -56,7 +56,7 @@ mysqli_free_result($result_check_stock);
 
 //check if payment info is already recorded if so don't enter it again
 
-$query = "SELECT * FROM payment_info WHERE card_num = '$Card_num'";
+$query = "SELECT * FROM payment_info WHERE card_num = '$Card_num' AND Name_on_card = '$Name_on_card' AND Bill_addr = '$Bill_addr' AND Exper_Date = '$Expr_Date'";
 $result = mysqli_query($myconnection, $query) or die ('Query failed: ' . mysql_error());
 
 $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
