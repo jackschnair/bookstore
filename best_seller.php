@@ -24,8 +24,11 @@
 // A guest searches for the best-selling book of a given year, 
 // if no year is given, return the best-selling book for the entire history.
 
-$Year = $_POST['year'];
-//echo $Year;
+//$Year = $_POST['year'];
+session_start();
+
+$Year = $_SESSION['year'];
+
 $myconnection = mysqli_connect('localhost', 'root', '') 
     or die ('Could not connect: ' . mysql_error());
 
