@@ -70,6 +70,9 @@ mysqli_free_result($result);
 mysqli_close($myconnection);
 ?>
 </table>
+<form>
+  <button formaction="guest.html">Back</button>
+</form>
 </body>
 </html>
 
