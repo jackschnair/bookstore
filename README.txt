@@ -1,9 +1,9 @@
 Readme
 
 Query 1
--A customer can register on the registry page.  Once the registration is complete, they may login in.  By selecting the Membership Settings
-page, a customer can upgrade to become a member.  In order to do so, they must enter their payment information.  Also, on the membership
-settings page is the ability for members to terminate their membership.
+-A customer can register on the registry page.  Once the registration is complete, they may login in with their email (which acts as a primary
+key).  By selecting the Membership Settings page, a customer can upgrade to become a member.  In order to do so, they must enter their payment 
+information.  Also, on the membership settings page is the ability for members to terminate their membership.
 
 Query 2
 -A publisher can log in using the publisher login page.  Once logged in, publishers can click on the add new book or change price page to
@@ -53,7 +53,8 @@ functions in a similar way to the search book page in that you have option to ad
 or the super user creates an author with their email on the "Add Author" page.
 
 Query 8
--Please add this
+-By going to the order history page, registered users can leave reviews on books they have purchased. Reviews can be read by other users by clicking
+the view ratings button on the search book and view books pages. One review is allowed per book per registered user.
 
 Extra Features
 

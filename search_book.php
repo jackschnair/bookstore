@@ -18,6 +18,7 @@
 <td><b><u>Add to Cart</b></u></td>
 <td><b><u>Add to Wishlist</b></u></td>
 <td><b><u>Trade In</b></u></td>
+<td><b><u>View Ratings</b></u></td>
 </tr>
 <?php
 
