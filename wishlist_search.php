@@ -77,5 +77,8 @@ mysqli_close($myconnection);
 </table>
 <br />
 </body>
+<form>
+  <button formaction="wishlist_search.html">Back</button>
+</form>
 </html>
 
