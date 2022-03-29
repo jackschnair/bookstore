@@ -136,3 +136,10 @@ else { // searches for best selling books of that year
 mysqli_close($myconnection);
 
 ?>
+</table>
+</body>
+<br/>
+<form>
+  <button formaction="guest.html">Back</button>
+</form>
+</html>

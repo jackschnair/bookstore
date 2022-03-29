@@ -187,3 +187,10 @@ else { // searches for best selling books of that year
 mysqli_close($myconnection);
 
 ?>
+</table>
+</body>
+<br/>
+<form>
+  <button formaction="userpage.php">Back</button>
+</form>
+</html>
