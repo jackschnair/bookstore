@@ -92,6 +92,10 @@ while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 	{
 		echo "<td>N/A</td>";
 	}
+	echo "<td><form action = \"view_ratings_and_comments.php\" method = \"Post\">";
+	echo "<input type = \"hidden\" name = \"ISBN\" value = \"$ISBN\">";
+	echo "<input type = \"hidden\" name = \"Book_Cond\" value = \"$Book_Cond\">";
+	echo "<input type = \"submit\" value = \"view ratings and comments\"></form></td>";
 	echo "</tr>";
 }
 
@@ -159,6 +163,10 @@ while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 	{
 		echo "<td>N/A</td>";
 	}
+	echo "<td><form action = \"view_ratings_and_comments.php\" method = \"Post\">";
+	echo "<input type = \"hidden\" name = \"ISBN\" value = \"$ISBN\">";
+	echo "<input type = \"hidden\" name = \"Book_Cond\" value = \"$Book_Cond\">";
+	echo "<input type = \"submit\" value = \"view ratings and comments\"></form></td>";
 	echo "</tr>";
 }
 
@@ -226,6 +234,10 @@ while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 	{
 		echo "<td>N/A</td>";
 	}
+	echo "<td><form action = \"view_ratings_and_comments.php\" method = \"Post\">";
+	echo "<input type = \"hidden\" name = \"ISBN\" value = \"$ISBN\">";
+	echo "<input type = \"hidden\" name = \"Book_Cond\" value = \"$Book_Cond\">";
+	echo "<input type = \"submit\" value = \"view ratings and comments\"></form></td>";
 	echo "</tr>";
 }
 
@@ -293,6 +305,10 @@ while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 	{
 		echo "<td>N/A</td>";
 	}
+	echo "<td><form action = \"view_ratings_and_comments.php\" method = \"Post\">";
+	echo "<input type = \"hidden\" name = \"ISBN\" value = \"$ISBN\">";
+	echo "<input type = \"hidden\" name = \"Book_Cond\" value = \"$Book_Cond\">";
+	echo "<input type = \"submit\" value = \"view ratings and comments\"></form></td>";
 	echo "</tr>";
 }
 
