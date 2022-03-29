@@ -25,4 +25,6 @@ $result2 = mysqli_query($myconnection, $query2) or die ('Query failed: ' . mysql
 
 mysqli_close($myconnection);
 
+header('Location: ' . $_SERVER['HTTP_REFERER']);
+
 ?>
