@@ -50,4 +50,6 @@ mysqli_free_result($result2);
 
 mysqli_close($myconnection);
 
+header('Location: ' . $_SERVER['HTTP_REFERER']);
+
 ?>

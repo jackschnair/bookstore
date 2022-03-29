@@ -15,6 +15,7 @@
 <td><b><u>Type</b></u></td>
 <td><b><u>Price</b></u></td>
 <td><b><u>Add to Cart</b></u></td>
+<td><b><u>View Ratings</b></u></td>
 </tr>
 <?php
 $myconnection = mysqli_connect('localhost', 'root', '') 

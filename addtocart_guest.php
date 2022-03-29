@@ -60,6 +60,14 @@ mysqli_free_result($result);
 
 mysqli_close($myconnection);
 
+//don't want to return to the guest info form
+if($_SESSION['Just_Completed_Form'] == True)
+{
+	$_SESSION['Just_Completed_Form'] = False;
+	header("Location: shopping_cart_guest.php");
+	die();
+}
+
 header('Location: ' . $_SERVER['HTTP_REFERER']);
 
 ?>

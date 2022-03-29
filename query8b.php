@@ -34,4 +34,6 @@ mysqli_free_result($result);
 
 mysqli_close($myconnection);
 
+header("Location: customer_order_history.php");
+
 ?>

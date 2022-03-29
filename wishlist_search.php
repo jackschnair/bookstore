@@ -19,7 +19,9 @@
 </tr>
 <?php
 
-$Email = $_POST['email'];
+session_start();
+
+$Email = $_SESSION['email_to_search'];
 
 $myconnection = mysqli_connect('localhost', 'root', '') 
     or die ('Could not connect: ' . mysql_error());

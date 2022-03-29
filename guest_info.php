@@ -64,6 +64,7 @@ $_SESSION['Cart_Num'] = $row8["Cart_ID"];
 
 mysqli_close($myconnection);
 
+$_SESSION['Just_Completed_Form'] = True;
 
 $Rtn_Val = $_SESSION['Return_Val'];
 switch($Rtn_Val) 
