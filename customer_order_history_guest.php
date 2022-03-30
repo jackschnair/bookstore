@@ -21,7 +21,9 @@
 
 <?php 
 
-$Order_Num = $_POST['Order_Num'];
+session_start();
+
+$Order_Num = $_SESSION['order_num_lookup'];
 
 $myconnection = mysqli_connect('localhost', 'root', '') or die ('Could not connect: ' . mysql_error());
 
@@ -45,7 +47,7 @@ while ($row = mysqli_fetch_array ($result, MYSQLI_ASSOC)) {
 	echo "<td>" . $row['Shipping_Method'] . "</td>";
 	echo "<td>" . $row['Shipping_Addr'] . "</td>";
 	if($row['Stock'] > 0) {
-		echo "<td><form action = \"addtocart.php\" method = \"Post\">";
+		echo "<td><form action = \"addtocart_guest.php\" method = \"Post\">";
 		echo "<input type = \"hidden\" name = \"ISBN\" value = \"$ISBN\">";
 		echo "<input type = \"hidden\" name = \"Book_Cond\" value = \"$Book_Cond\">";
 		echo "<input type = \"submit\" value = \"Add to Cart\"></form></td>";
