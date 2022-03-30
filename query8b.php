@@ -12,10 +12,9 @@ $myconnection = mysqli_connect('localhost', 'root', '') or die ('Could not conne
 
 $mydb = mysqli_select_db ($myconnection, 'bookstore') or die ('Could not select database');
 
-$query5 = "SELECT Email FROM rates INNER JOIN is_rated ON rates.RID = is_rated.Rate_ID 
-INNER JOIN rating ON rating.Rate_ID = rates.RID 
-WHERE ISBN = '$ISBN' AND Book_Cond = '$Book_Cond'";
-
+$query5 = "SELECT Email
+FROM rating A, rates B, is_rated C, book D 
+WHERE A.Rate_ID = B.RID AND B.RID = C.Rate_ID AND C.ISBN = '$ISBN' AND C.Book_Cond = '$Book_Cond' AND C.ISBN = D.ISBN AND C.Book_Cond = D.Book_Cond";
 $result5 = mysqli_query($myconnection, $query5) or die ('Query failed: ' . mysql_error());
 
 $total = mysqli_num_rows($result5);
@@ -40,10 +39,12 @@ if($total == 0)
 	$result4 = mysqli_query($myconnection, $query4) or die ('Query failed: ' . mysql_error());
 	
 	mysqli_free_result($result);
-
-} 
-	mysqli_close($myconnection);
 	header("Location: customer_order_history.php");
-
-
+	
+} else {
+	echo "already submit a comment and rating";
+	
+}
+	mysqli_close($myconnection);
+	
 ?>
