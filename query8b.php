@@ -12,28 +12,38 @@ $myconnection = mysqli_connect('localhost', 'root', '') or die ('Could not conne
 
 $mydb = mysqli_select_db ($myconnection, 'bookstore') or die ('Could not select database');
 
-$query = "SELECT max(RID) + 1 as newRID FROM rates";
+$query5 = "SELECT Email FROM rates INNER JOIN is_rated ON rates.RID = is_rated.Rate_ID 
+INNER JOIN rating ON rating.Rate_ID = rates.RID 
+WHERE ISBN = '$ISBN' AND Book_Cond = '$Book_Cond'";
 
-$result = mysqli_query($myconnection, $query) or die ('Query failed: ' . mysql_error());
+$result5 = mysqli_query($myconnection, $query5) or die ('Query failed: ' . mysql_error());
 
-$row = mysqli_fetch_array($result, MYSQLI_ASSOC); 
+$total = mysqli_num_rows($result5);
 
-$new_RID = $row["newRID"];
+if($total == 0)
+{
+	$query = "SELECT max(RID) + 1 as newRID FROM rates";
 
-$query2 = "INSERT INTO rating VALUES('$new_RID','$comment','$rating')";
-$result2 = mysqli_query($myconnection, $query2) or die ('Query failed: ' . mysql_error());
+	$result = mysqli_query($myconnection, $query) or die ('Query failed: ' . mysql_error());
 
-$query3 = "INSERT INTO rates VALUES('$new_RID','$Email')";
-$result3 = mysqli_query($myconnection, $query3) or die ('Query failed: ' . mysql_error());
+	$row = mysqli_fetch_array($result, MYSQLI_ASSOC); 
 
-$query4 = "INSERT INTO is_rated VALUES('$ISBN','$Book_Cond','$new_RID')";
-$result4 = mysqli_query($myconnection, $query4) or die ('Query failed: ' . mysql_error());
+	$new_RID = $row["newRID"];
 
+	$query2 = "INSERT INTO rating VALUES('$new_RID','$comment','$rating')";
+	$result2 = mysqli_query($myconnection, $query2) or die ('Query failed: ' . mysql_error());
 
-mysqli_free_result($result);
+	$query3 = "INSERT INTO rates VALUES('$new_RID','$Email')";
+	$result3 = mysqli_query($myconnection, $query3) or die ('Query failed: ' . mysql_error());
 
-mysqli_close($myconnection);
+	$query4 = "INSERT INTO is_rated VALUES('$ISBN','$Book_Cond','$new_RID')";
+	$result4 = mysqli_query($myconnection, $query4) or die ('Query failed: ' . mysql_error());
+	
+	mysqli_free_result($result);
 
-header("Location: customer_order_history.php");
+} 
+	mysqli_close($myconnection);
+	header("Location: customer_order_history.php");
+
 
 ?>
