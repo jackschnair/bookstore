@@ -13,8 +13,8 @@ $myconnection = mysqli_connect('localhost', 'root', '') or die ('Could not conne
 $mydb = mysqli_select_db ($myconnection, 'bookstore') or die ('Could not select database');
 
 $query5 = "SELECT Email
-FROM rating A, rates B, is_rated C, book D 
-WHERE A.Rate_ID = B.RID AND B.RID = C.Rate_ID AND C.ISBN = '$ISBN' AND C.Book_Cond = '$Book_Cond' AND C.ISBN = D.ISBN AND C.Book_Cond = D.Book_Cond";
+FROM rating A, rates B, is_rated C
+WHERE A.Rate_ID = B.RID AND B.RID = C.Rate_ID AND C.ISBN = '$ISBN' AND C.Book_Cond = '$Book_Cond' AND email = '$Email'";
 $result5 = mysqli_query($myconnection, $query5) or die ('Query failed: ' . mysql_error());
 
 $total = mysqli_num_rows($result5);
