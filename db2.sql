@@ -234,8 +234,8 @@ INSERT INTO In_Order VALUES(100, '1477325925', 'new', 2, 'standard', 'Maple st. 
 INSERT INTO In_Order VALUES(101, '3288324823', 'used', 1, 'standard', 'Farley st. 23', 2.99, 8.99);
 INSERT INTO In_Order VALUES(102, '8437548384', 'used', 2, 'standard', 'Burner st. 51', 3.99, 20.99);
 INSERT INTO In_Order VALUES(102, '8932578825', 'new',1, 'standard', 'Curly st. 42', 1.99, 15.99);
-INSERT INTO In_Order VALUES(103, '8325787825', 'new',1, 'download', 'Waverly pl. 3', 4.99, 15.99);
-INSERT INTO In_Order VALUES(104, '1234455677', 'used',1, 'standard', 'Cod rd. 96', 3.99, 14.99);
+INSERT INTO In_Order VALUES(103, '8325787825', 'new', 1, 'download', 'Waverly pl. 3', 0, 15.99);
+INSERT INTO In_Order VALUES(104, '1234455677', 'used', 1, 'standard', 'Cod rd. 96', 3.99, 14.99);
 INSERT INTO In_Order VALUES(105, '1477325925', 'new',1, 'express', 'Milk st. 105', 0, 12.99);
 INSERT INTO In_Order VALUES(106, '8932578825', 'new',1, 'express', 'Summer st. 5', 0, 13.99);
 INSERT INTO In_Order VALUES(107, '8932578825', 'new',1, 'express', 'Milk st. 105', 0, 29.99);

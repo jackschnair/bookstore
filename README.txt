@@ -3,7 +3,7 @@ Readme
 Query 1
 -A customer can register on the registry page.  Once the registration is complete, they may login in with their email (which acts as a primary
 key).  By selecting the Membership Settings page, a customer can upgrade to become a member.  In order to do so, they must enter their payment 
-information.  Also, on the membership settings page is the ability for members to terminate their membership.
+information.  Also, on the membership settings page has the ability for members to terminate their membership.
 
 Query 2
 -A publisher can log in using the publisher login page.  Once logged in, publishers can click on the add new book or change price page to
@@ -19,12 +19,14 @@ Query 3
 the pages that a typical user can see (excluding the special page for authors to view their books) plus some extras.  In the case of query 3, the super
 user can click on the update shipping cost page.  They can then fill out a short form to update the shipping cost of a book. Note that members always receive
 free shipping and the super user is unable to change this.
+-The super user cannot trade in books.
+
 
 Query 4
 -There are a few different ways a customer can search for a book.  They can either search with a keyword on the Book Search page or the may view a list
 of all the books on the View Books page.  On the Book Search page customers may enter the title, author, genre, or ISBN of the book.  Once entered,
-all the books that fit the search criteria will be listed.  The title and author don't need to be exact matches for a book to be found, but the genre and ISBN do.  Once they
-find the book they are looking for, users may add them to their cart by clicking add to cart. 
+all the books that fit the search criteria will be listed.  The title and author don't need to be exact matches for a book to be found, but the genre and ISBN do.  Once one
+finds the book they are looking for, they may add it to their cart by clicking add to cart. 
 -For guests the process is slightly different.  Each guest must be given a shopping cart before they can add to cart.  In order to do so, each guest must
 give the bookstore some information.  Hence, if the guest does not have a shopping cart, they will be redirected to a page where they can fill out 
 information, so that one can be given to them.  However, guests may still view all the books without having to enter in any information (they just can't
@@ -69,7 +71,7 @@ wish list.  While viewing your own wish list you may books to cart or remove boo
 -The most complex special feature is the ability to trade books in.  In this way, the bookstore would be able to sell used books traded in
 by customers in a fashion similar to that of GameStop.  A user who is logged in can elect to trade in a book by clicking the trade button
 available on the View Books page or in the Book Search page.  The user will then be prompted to send the book to a certain location.  Once 
-the bookstore has received the book, a moderator (in this case the super user) can log in and fill out a short form specifying the book has
+the bookstore has received the book, a moderator (in this case the super user) can log in and fill out a short form specifying that the book has
 been successfully traded in (this small form is called the "Update Trade" form).  When finished the database will update to record that the book
 was successfully traded in, increasing the stock of used copies of the traded in book, and giving store credit to the user.  Each book has a specific trade
 value which determines how much store credit the user receives when they trade in a book (which is a fraction of the price of the book). The user
