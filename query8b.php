@@ -39,12 +39,9 @@ if($total == 0)
 	$result4 = mysqli_query($myconnection, $query4) or die ('Query failed: ' . mysql_error());
 	
 	mysqli_free_result($result);
-	header("Location: customer_order_history.php");
-	
-} else {
-	echo "already submit a comment and rating";
-	
 }
-	mysqli_close($myconnection);
+	
+mysqli_close($myconnection);
+header("Location: customer_order_history.php");
 	
 ?>
