@@ -1,4 +1,5 @@
 Readme
+Timothy Beck, Jack Schnair, Tri Dinh
 
 Query 1
 -A customer can register on the registry page.  Once the registration is complete, they may login in with their email (which acts as a primary
